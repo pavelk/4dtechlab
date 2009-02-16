@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ExceptionLoggable
   
   helper :all
   helper_method :current_user_session, :current_user
@@ -7,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_active_tab
   
   before_filter :check_authentication
+  
+  #include ExceptionLoggable
   
   add_crumb "TechLab", '/'
     
