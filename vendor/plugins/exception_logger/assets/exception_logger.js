@@ -1,48 +1,38 @@
 ExceptionLogger = {
   filters: ['exception_names', 'controller_actions', 'date_ranges'],
   setPage: function(num) {
-    $('page').value = num;
-    $('query-form').onsubmit();
+    $('#page').val(num);
+    $('#query-form').submit();
   },
   
   setFilter: function(context, name) {
-    var filterName = context + '_filter'
-    $(filterName).value = ($F(filterName) == name) ? '' : name;
+    var filterName = '#' + context + '_filter'
+    $(filterName).value = ($(filterName).val() == name) ? '' : name;
     this.deselect(context, filterName);
-    $('page').value = '1';
-    $('query-form').onsubmit();
+    $('#page').value = '1';
+    $('#query-form').submit();
   },
 
   deselect: function(context, filterName) {
-    $$('#' + context + ' a').each(function(a) {
-      var value = $(filterName) ? $F(filterName) : null;
+    $('#' + context + ' a').each(function(a) {
+      var value = $(filterName) ? $(filterName).val() : null;
       a.className = (value && (a.getAttribute('title') == value || a.innerHTML == value)) ? 'selected' : '';
     });
   },
   
   deleteAll: function() {
-    return Form.serialize('query-form') + '&' + $$('tr.exception').collect(function(tr) { return tr.getAttribute('id').gsub(/^\w+-/, ''); }).toQueryString('ids');
+    return $('#query-form').serialize() + '&' + jQuery.map($('tr.exception'), function(tr) { return 'ids[]=' + tr.id.replace(/^\w+-/, '') }).join('&');
   }
 }
 
-Event.observe(window, 'load', function() {
-  ExceptionLogger.filters.each(function(context) {
+$(document).ready(function(){
+  jQuery.each(ExceptionLogger.filters, function(context) {
     $(context + '_filter').value = '';
   });
 });
 
-Object.extend(Array.prototype, {
-  toQueryString: function(name) {
-    return this.collect(function(item) { return name + "[]=" + encodeURIComponent(item) }).join('&');
-  }
-});
 
-Ajax.Responders.register({
-  onCreate: function() {
-    if($('activity') && Ajax.activeRequestCount > 0) $('activity').visualEffect('appear', {duration:0.25});
-  },
+$("#activity")
+  .ajaxStart(function(){ $(this).show(250); })
+  .ajaxStop(function(){ $(this).hide(250); }); 
 
-  onComplete: function() {
-    if($('activity') && Ajax.activeRequestCount == 0) $('activity').visualEffect('fade', {duration:0.25});
-  }
-});

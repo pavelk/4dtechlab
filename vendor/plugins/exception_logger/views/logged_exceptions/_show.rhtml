@@ -1,7 +1,7 @@
 <div class="tools">
 <%= link_to_remote 'Delete', {:url => { :action => 'destroy', :id => @exc }} , :class => "util" %>
 <span class="pipe">|</span>
-<%= link_to_function "Close", "$('showpage').style.display='none';", :class => "util" %>
+<%= link_to_function "Close", "$('#showpage').hide();", :class => "util" %>
 	
 </div>
 
