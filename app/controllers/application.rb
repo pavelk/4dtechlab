@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
     end
     
     def check_authentication
-      chyba
       unless current_user
         store_location
         flash[:error] = "You must be logged in to access this page"
