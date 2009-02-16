@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ExceptionLoggable
+  
   helper :all
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation

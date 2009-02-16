@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.user_detail 'users/:id/:title', :controller => 'users', :action => 'user_detail', :title => nil
   map.resources :password_resets
   #map.root :controller => "user_sessions", :action => "new"
-  
+  map.connect "logged_exceptions/:action/:id", :controller => "logged_exceptions"
   
   # The priority is based upon order of creation: first created -> highest priority.
 

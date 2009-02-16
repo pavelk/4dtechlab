@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090211130957) do
+ActiveRecord::Schema.define(:version => 20090216144045) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(:version => 20090211130957) do
     t.datetime "updated_at"
   end
 
+  create_table "logged_exceptions", :force => true do |t|
+    t.string   "exception_class"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.text     "message"
+    t.text     "backtrace"
+    t.text     "environment"
+    t.text     "request"
+    t.datetime "created_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -89,6 +100,17 @@ ActiveRecord::Schema.define(:version => 20090211130957) do
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
+  create_table "rights", :force => true do |t|
+    t.string "name"
+    t.string "controller"
+    t.string "action"
+  end
+
+  create_table "rights_roles", :id => false, :force => true do |t|
+    t.integer "right_id"
+    t.integer "role_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string "name"
