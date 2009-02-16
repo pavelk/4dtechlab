@@ -1,0 +1,30 @@
+%h2.main= @help.title
+.box.boxArticles.boxArticle
+  .item
+    .self
+      %p= @help.perex
+    .text= @help.description
+.box.boxForm
+  .h
+    %h3 Add new comment
+  .in
+    - form_for([@help, Comment.new]) do |f|
+      %fieldset
+        %legend Add new comment.
+        .formBox
+          = render :partial => 'comments/form', :locals => { :f => f }
+        = submit_tag "Send comment", :class => 'submit'
+.box.boxComments
+  .h
+    %h3 Help comments
+  .in
+    - @comments.each do |comment|
+      .item
+        .head
+          %h4
+            = comment.user.login 
+            | 
+            = comment.title
+          %p= distance_of_time_in_words_to_now(comment.created_at)
+        .self
+          %p= comment.comment

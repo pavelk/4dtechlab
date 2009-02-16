@@ -1,0 +1,9 @@
+%h2.main New help
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for(:help, :url => collection_url) do |f|
+        = f.error_messages
+        = render :partial => "form", :locals => { :f => f }
+        = f.submit "Create help", :class => 'submit'
+= link_to 'Back', collection_url

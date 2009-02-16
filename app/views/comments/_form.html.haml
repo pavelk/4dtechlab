@@ -1,0 +1,9 @@
+.clearfix
+  = f.label :title, 'Subject:'
+  = f.text_field :title, :class => 'button'
+.clearfix
+  = f.label :comment, 'Question:'
+  = f.text_area :comment, :rows => 4, :cols => 30, :class => 'button w100' 
+
+-#%label{:for => "comment_commentary"} Commentary:
+-#= f.text_field :commentary

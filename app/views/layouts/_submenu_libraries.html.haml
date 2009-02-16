@@ -1,0 +1,5 @@
+%h3.hidden Submenu
+%ul
+  - Library.roots.each_with_index do |event,index|
+    %li= link_to(event.title, users_path)
+

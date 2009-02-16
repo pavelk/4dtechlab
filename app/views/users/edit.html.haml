@@ -1,0 +1,8 @@
+%h2.main Edit My Account
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for (@user), :html => { :multipart => true } do |f|
+        = f.error_messages
+        = render :partial => "form_account", :locals => { :f => f }
+        = f.submit "Update My Account", :class => 'submit'

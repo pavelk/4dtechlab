@@ -1,0 +1,8 @@
+%div{:id => "post-body-#{post_post.id}", :class => 'item'}
+  .head
+    %h3= link_to(post_post.user.full_name, user_detail_path(:id => post_post.user, :user => post_post.user.full_name.parameterize))
+    = link_to(image_tag(post_post.user.avatar.url(:forum)), user_detail_path(:id => post_post.user, :user => post_post.user.full_name.parameterize))
+    %p= "#{post_post.user.posts_count} post(s)"  
+    %p= distance_of_time_in_words_to_now(post_post.created_at)
+  .self
+    = post_post.body

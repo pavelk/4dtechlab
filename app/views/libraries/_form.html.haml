@@ -1,0 +1,3 @@
+= f.text_field :title
+%br
+= f.select(:parent_id, nested_set_options(Library, @library) {|i| "#{'-' * i.level} #{i.title}" }, { :include_blank => true })

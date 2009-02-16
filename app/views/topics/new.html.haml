@@ -1,0 +1,14 @@
+%h1 New topic
+
+= error_messages_for :topic
+
+- form_for(:topic, :url => collection_url) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p
+    %label{:for => "post_body"} First Post:
+    %br
+    = text_area :post, :body, :rows => 8, :cols => 60
+  %p= submit_tag "Create"
+
+= link_to 'Back', collection_url
+

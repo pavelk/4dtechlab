@@ -1,0 +1,45 @@
+- content_for :box_1 do
+  = render(:partial => "shared/calendar", :locals => { :events => @month_events, :date => @date })
+- content_for :box_2 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags})  
+%h2.main= @event.title
+%p.navi &nbsp;
+/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
+.box.boxArticles.boxArticle
+  .item
+    %p.info 
+      = distance_of_time_in_words_to_now(@event.created_at) 
+      by 
+      = @event.user.login
+      ,
+      = @comments.size
+      Comments
+    .self
+      %p= @event.perex
+    .text= @event.description
+    %br
+    #tags=@event.tag_list.join(", ")
+.box.boxForm
+  .h
+    %h3 Add new comment
+  .in
+    - form_for([@event, Comment.new]) do |f|
+      %fieldset
+        %legend Add new comment.
+        .formBox
+          = render :partial => 'comments/form', :locals => { :f => f }
+        = submit_tag "Send comment", :class => 'submit'
+.box.boxComments
+  .h
+    %h3 Event comments
+  .in
+    - @comments.each do |comment|
+      .item
+        .head
+          %h4
+            = comment.user.login 
+            | 
+            = comment.title
+          %p= distance_of_time_in_words_to_now(comment.created_at)
+        .self
+          %p= comment.comment

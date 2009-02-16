@@ -1,0 +1,89 @@
+- content_for :submenu, render(:partial=> "layouts/#{controller.sub_menu}") if controller.sub_menu != nil
+- content_for :sidebarmenu, render(:partial=> "layouts/#{controller.sidebar_menu}") if controller.sidebar_menu != nil
+!!! Strict
+%html{ html_attrs('en') }
+  %head
+    %meta{ 'http-equiv' => 'content-type', :content => 'text/html', :charset => 'utf-8' }
+    %meta{ 'http-equiv' => 'content-language', :content => 'en' }
+    %meta{ :name => 'author', :content => 'Euro RSCG 4D Prague' }
+    %meta{ :name => 'copyright', :content => '2008 Euro RSCG 4D' }
+    %meta{ :name => 'description', :content => '4dtechlab is...' }
+    %meta{ :name => 'keywords', :content => 'eurorscg, eurorscg4d' } 
+    %title 4d techlab
+    = stylesheet_link_tag 'application', 'addition', 'jquery.cluetip.css'
+    = stylesheet_link_tag 'print', :media => 'print'
+    /[if IE 6]
+      = stylesheet_link_tag 'msie'
+    = javascript_include_tag :defaults, 'jquery.cluetip.js', 'init.js'
+  %body
+    %ul.noscreen
+      %li
+        %a{ :href => '#content' }Přeskočit na obsah         
+      %li
+        %a{ :href => '#mainMenu' }Přeskočit na menu
+    %hr.hidden
+    #view
+      #head
+        #logo
+        .holder
+          %h1#header.overlaid
+            = link_to 'Tech Lab<span></span>', root_url
+          #mainMenu
+            - if current_user
+              = render :partial => 'layouts/main_menu'
+              -#= navigation :users, :events, :forums
+            - else
+              %ul
+                %li
+          #subMenu
+            = yield :submenu
+          %ul#topMenu
+            - if !current_user
+              %li= link_to "Log In", new_user_session_path
+              %li.alt= link_to "Register", new_user_path
+            - else
+              %li= link_to "My profile", edit_user_path(current_user)
+              %li.add
+                %a.overlaid{ :href => '' }Add item<span></span>
+                .cont
+                  %ul
+                    %li
+                      %a{ :href => '' }Add Project showcase
+                    %li
+                      %a{ :href => '' }Add Library Item
+                    %li
+                      %a{ :href => '' }Create New Forum Topic
+                  .bottom
+              %li.messages
+                -#%a{ :href => '' }Private messages:
+                -#%strong 2
+              %li.alt= link_to "Logout", user_session_path, :method => :delete, :confirm => 'Are you sure you want to logout?'
+              - form_tag(search_path, :method => 'get', :class => 'inline', :id => 'search') do
+                %fieldset
+                  %legend Fulltext search
+                  = text_field_tag :search, params[:search], :id => 'search_phrase', :value => 'Fulltext search', :class => 'button'
+                  = submit_tag "Search", :name => nil, :class => 'submit'
+      %hr.hidden
+      #content.holder
+        #sidebar
+          = yield :sidebarmenu 
+          /domluvit s Lukasem default sirku
+          .box.tagCloud
+          /domluvit s Lukasem default sirku
+          = yield :box_1
+          = yield :box_2
+        %hr.hidden
+        #contentBlock
+          - if ENV["RAILS_ENV"] == "development" 
+            -#= debug(params)
+            -#= controller.sub_navigation
+            -#= @active_tab
+          -#%h2.main What is new here
+          - flash.each do |key, msg|
+            %div{ :class => "msg #{key}" }= msg
+          %p.navi= render_crumbs(:seperator => ' &gt; ')  
+          = yield
+      %hr.hidden
+      #foot.holder
+        %p.foot &copy; 2009 Euro RSCG 4D
+        %a.overlaid.euro{ :href => '' }Euro RSCG 4D<span></span>

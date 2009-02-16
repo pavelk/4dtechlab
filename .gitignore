@@ -1,0 +1,14 @@
+.DS_Store
+.svn
+db/sphinx
+doc/**/*
+doc/*.rtf
+log/*.log
+log/*.pid
+tmp/**/*
+config/database.yml
+config/deploy.rb
+config/*sphinx*
+nbproject
+lib/tasks/svn.rake
+public/assets

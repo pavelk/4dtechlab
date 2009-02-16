@@ -1,0 +1,11 @@
+%ul
+  -#%li
+    -#%a{ :href => '' }Project showcase
+  -#%li
+    -#%a{ :href => '' }Library
+  -#%li= link_to 'Library', libraries_path
+  -#%li= link_to 'Forum', forums_path
+  %li= main_tab_for('Forum', forums_path)
+  %li= main_tab_for('People', users_path)
+  %li= main_tab_for('Events', events_all_path(:year => Time.now.year, :month => Time.now.month))
+  %li.fr= main_tab_for('Help', helps_path)

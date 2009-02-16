@@ -1,0 +1,11 @@
+- special_days = events.collect { |x| x.event_date.to_date }.uniq
+.box.calendar
+  .h
+    %h3 Updates by day
+  .in
+    = calendar( :year => date.year, :month => date.month, :next_month_text => (link_to("&gt;&gt;", events_all_path(:year => date.next_month.strftime("%Y"), :month => date.next_month.strftime("%m")))), :previous_month_text => (link_to("&lt;&lt;", events_all_path(:month => date.last_month.strftime("%m"), :year => date.last_month.strftime("%Y")))), :first_day_of_week => 1 ) do |d|
+      - if special_days.include?(d)
+        -#- [link_to(d.mday, events_detail_path(:year => d.year, :month => d.month, :day => d.mday)), { :class => "tooltip" }]
+        - [link_to(d.mday, events_detail_path(:year => d.year, :month => d.month, :day => d.mday))]
+      - else
+        - [d.mday]

@@ -1,0 +1,8 @@
+- recent_post = topic.recent_post
+- if recent_post != nil
+  = distance_of_time_in_words_to_now(recent_post.created_at)
+  %br
+  by
+  %strong
+    = recent_post.user.login
+  %span= link_to('view', forum_topic_posts_path(topic.forum,topic, :anchor => "post-body-#{recent_post.id}"))

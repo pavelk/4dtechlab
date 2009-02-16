@@ -1,0 +1,18 @@
+%tr
+  %td.vat.c1
+    %img.icon.grey{:alt => 'Comment', :title => 'No recent activity', :src => '/images/forum/comment.gif'}
+  %td.c2.vat
+    = link_to(forum_post.title, forum_topics_path(forum_post), :class => 'title')
+    .posts 
+      = forum_post.topics.size
+      topic(s),
+      = forum_post.posts.size
+      post(s)
+    %p.desc
+      %p= forum_post.perex
+  %td.c3
+  %td.inv.lp
+    = render(:partial => "shared/forum_last_post", :locals => { :forum => forum_post})
+    - if_admin? do
+      %ul.actions
+        %li= link_to 'Edit', edit_object_url(forum_post), :class => 'ico edit fr'

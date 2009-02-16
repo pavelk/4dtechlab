@@ -1,0 +1,27 @@
+- content_for :box_1 do
+  = render(:partial => "layouts/recentpost_forum", :locals => { :posts => Post.new_posted })
+%h2.main
+  -#= @forum.title if parent_object 
+  = @topic.title if parent_object
+.forum
+  = render(:partial => "post_post", :collection => @posts)
+
+
+        
+
+
+
+-if parent_object
+
+  = error_messages_for :post
+  .cols.cols2v1
+    .col1
+      .box.profileForm.formBox
+        - form_for(:post, :url => forum_topic_posts_path) do |f|
+          = render :partial => "form", :locals => { :f => f }
+          %p= submit_tag "Create"
+
+-#=link_to 'New post', new_object_url
+-#= link_to 'Show', object_url(post)
+-#= link_to 'Edit', edit_object_url(post)
+-#= link_to 'Destroy', object_url(post), :confirm => 'Are you sure?', :method => :delete

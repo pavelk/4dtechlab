@@ -1,0 +1,25 @@
+- content_for :box_1 do
+  = render(:partial => "layouts/recentpost_forum", :locals => { :posts => Post.new_posted })
+%h2.main Forum
+-#%p.counter 123 topic(s), 965 post(s), 106 voice(s)
+.forum
+  %table.wide.forums{:cellspacing => 0, :cellpadding => 0}
+    %tr
+      %th.la{:width => '70%', :colspan => 3}Forum
+      %th.la{:width => '30%', :colspan => 1}Last Post
+    = render(:partial => "forum_post", :collection => @forums)
+  -#%p= link_to('Recent Posts', forums_path)
+    
+-#= link_to 'Show', object_url(forum)          
+-#= link_to 'Edit', edit_object_url(forum)        
+-#= link_to 'Destroy', object_url(forum), :confirm => 'Are you sure?', :method => :delete
+- if_admin? do
+  = link_to 'New forum', new_object_url
+
+
+
+
+
+
+
+

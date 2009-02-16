@@ -1,0 +1,20 @@
+%fieldset
+  %legend
+  .in
+    .clearfix
+      .lab
+        = f.label :title, 'Question:'
+      .con
+        = f.text_field :title, :class => 'button w100'
+  .in
+    .clearfix
+      .lab
+        = f.label :perex, 'Question briefly:'
+      .con
+        = f.text_area :perex, :rows => 4, :cols => 30, :class => 'button w100'
+  .in
+    .clearfix
+      .lab
+        = f.label :description, 'Answer:'
+      .con
+        = f.text_area :description, :rows => 4, :cols => 30, :class => 'button w100'

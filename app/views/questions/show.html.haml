@@ -1,0 +1,16 @@
+%h2.main= @question.title
+.box.boxArticles.boxArticle
+  .item
+    .self
+      %p= @question.perex
+    .text= @question.description
+  - if @question.active
+    - form_for(:question, :url => solved_question_path(@question), :html => { :method => :put }) do |f|
+      -#= f.hidden_field :solved, :value => true
+      = f.hidden_field :title, :value => @question.title
+      = f.hidden_field :perex, :value => @question.perex
+      = f.hidden_field :description, :value => @question.description
+      = f.submit "Copy to help", :class => 'submit'
+= link_to 'Edit', edit_object_url
+|
+= link_to 'Back', collection_url

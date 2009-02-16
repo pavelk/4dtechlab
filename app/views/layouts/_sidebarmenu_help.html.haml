@@ -1,0 +1,9 @@
+.box.list
+  .h
+    %h3 Most frequented
+  .in
+    %ul
+      - Help.most.each do |help|
+        %li= link_to(help.title, help_path(help),:class => 'inlink')
+        
+        

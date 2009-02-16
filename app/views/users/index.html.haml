@@ -1,0 +1,12 @@
+%h2.main Find people
+%p.counter
+  Found
+  %strong= @users.size
+  profiles
+.box.boxPeople
+  = render(:partial => 'person', :collection => @users)
+.paging        
+
+-#= link_to 'Show', user
+-#= link_to 'Edit', edit_user_path(user)
+-#= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,11 @@
+%tr.hentry
+  %td.c1{:style => 'padding:5px; width:16px;'}
+    %img.icon.grey{:alt => 'Comment', :title => 'No recent activity', :src => '/images/forum/comment.gif'}
+  %td.c2= link_to(topic_post.title, forum_topic_posts_path(@forum,topic_post), :class => 'entry-title', :rel => 'bookmark')
+  %td.ca.inv.stat= topic_post.posts_count
+  %td.ca.inv.stat= topic_post.hits
+  %td.lp
+    %abbr.updated{:title => '2009-01-14T09:52:17Z'} 
+      = render(:partial => "shared/topic_last_post", :locals => { :topic => topic_post})
+      %ul.actions
+        %li= link_to 'Edit', edit_object_url(topic_post), :class => 'ico edit fr'

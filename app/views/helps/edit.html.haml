@@ -1,0 +1,12 @@
+%h2.main New help
+= error_messages_for :help
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for(:help, :url => object_url, :html => { :method => :put }) do |f|
+        -#= f.error_messages
+        = render :partial => "form", :locals => { :f => f }
+        = f.submit "Update help", :class => 'submit'
+= link_to 'Show', object_url
+|
+= link_to 'Back', collection_url

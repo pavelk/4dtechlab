@@ -1,0 +1,59 @@
+%fieldset
+  %legend Edit My Account
+  .in
+    .clearfix
+      .lab
+        = f.label :email, 'E-mail:'
+      .con
+        = f.text_field :email, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :email, 'Country:'
+      .con
+        = f.country_select("country", "country_name", :include_blank => 'Please choose...')      
+    .clearfix
+      .lab
+        = image_tag @user.avatar.url(:small)
+        = f.label :avatar, 'Avatar - jpg, png, gif under 1 mega'
+      .con
+        = f.file_field :avatar
+    .clearfix
+      .lab
+        = f.label :first_name, 'First name:'
+      .con
+        = f.text_field :first_name, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :last_name, 'Last name:'
+      .con
+        = f.text_field :last_name, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :website, 'Website:'
+      .con
+        = f.text_field :website, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :phone_office, 'Office phone:'
+      .con
+        = f.text_field :phone_office, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :phone_mobile, 'Mobile phone:'
+      .con
+        = f.text_field :phone_mobile, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :fax, 'Fax:'
+      .con
+        = f.text_field :fax, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :agency, 'Agency:'
+      .con
+        = f.text_field :agency, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :user_position, 'Position:'
+      .con
+        = f.text_field :user_position, :class => 'button w100'

@@ -1,0 +1,13 @@
+%h2.main Questions
+.box.boxList
+  - @questions.each do |question|
+    .item
+      %h3
+        = link_to(question.title, object_url(question), :class => 'inlink')
+      %p= question.perex
+    %ul.actions
+      %li= link_to 'Edit', edit_object_url(question), :class => 'ico edit fr'  
+        
+-#= link_to 'Show', object_url(question)
+-#= link_to 'Edit', edit_object_url(question)
+-#= link_to 'Destroy', object_url(question), :confirm => 'Are you sure?', :method => :delete

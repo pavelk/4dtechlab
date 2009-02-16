@@ -1,0 +1,33 @@
+%h2.main= @user.full_name
+.boxPeople.profile-detail
+  .head
+    %p= @user.user_position
+    = image_tag @user.avatar.url(:small)
+    .rating
+      %span.star-7
+  .self
+    .clearfix
+      .lab Position
+      .con= @user.user_position
+    .clearfix
+      .lab E-mail
+      .con= mail_to(@user.email, @user.email)
+    .clearfix
+      .lab Website
+      .con= link_to(@user.website, @user.website, :rel => 'nofollow') 
+    .clearfix
+      .lab Phone
+      .con
+        %span.phone= @user.phone_office
+        , 
+        %span.phone= @user.phone_mobile
+    .clearfix
+      .lab Fax
+      .con
+        %span.phone= @user.fax
+    .clearfix
+      .lab Agency
+      .con= @user.agency
+    .clearfix
+      .lab Country
+      .con= @user.country

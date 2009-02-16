@@ -1,0 +1,15 @@
+%h1 Listing libraries
+
+%table
+  %tr
+  - @libraries.each do |library|
+    %tr
+      %td{:colspan => 3}= library.title 
+    %tr
+      %td= link_to 'Show', object_url(library)
+      %td= link_to 'Edit', edit_object_url(library)
+      %td= link_to 'Destroy', object_url(library), :confirm => 'Are you sure?', :method => :delete
+
+%br/
+
+=link_to 'New library', new_object_url

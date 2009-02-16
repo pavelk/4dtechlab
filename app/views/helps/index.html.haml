@@ -1,0 +1,29 @@
+%h2.main Help
+.box.boxList
+  - @helps.each do |help|
+    .item
+      %h3
+        = link_to(help.title, object_url(help), :class => 'inlink')
+      %p= help.perex
+.box.boxForm
+  .h
+    %h3 Any other question?
+  .in
+    = error_messages_for :question
+    - form_for(Question.new) do |f|
+      %fieldset
+        %legend Add new question to TechLab help database.
+        .formBox
+          .clearfix
+            = f.label :title, 'Question:'
+            = f.text_field :title, :size => '40', :class => 'button'
+          .clearfix
+            = f.label :perex, 'Description:'
+            = f.text_area :perex, :rows => 4, :cols => 30, :class => 'button w100'
+        = submit_tag "Send it", :class => 'submit'
+
+-#= link_to 'Show', object_url(help)
+-#= link_to 'Edit', edit_object_url(help)
+-#= link_to 'Destroy', object_url(help), :confirm => 'Are you sure?', :method => :delete
+
+= link_to 'New help', new_object_url

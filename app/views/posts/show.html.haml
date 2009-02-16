@@ -1,0 +1,5 @@
+= markdown(@post.body)
+= BlueCloth::new(@post.body).to_html
+= link_to 'Edit', edit_forum_topic_post_path if parent_object
+|
+-#= link_to 'Back', collection_url

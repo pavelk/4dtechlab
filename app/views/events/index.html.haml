@@ -1,0 +1,24 @@
+- content_for :box_1 do
+  = render(:partial => "shared/calendar", :locals => { :events => @month_events, :date => @date })
+- content_for :box_2 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
+%h2.main Events 
+/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
+%p.counter= "Found #{@events.size} articles"
+.box.boxArticles
+  - @events.each_with_index do |event,index|
+    .item.first
+      -#= first_item(index)
+      -#%h3= link_to event.title, object_url(event)
+      %h3= link_to event.title, events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday)
+      -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
+      .self
+        %p= truncate(event.perex, :length => 180, :omission => '&hellip;')
+      %ul.actions
+        %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'
+  
+  =link_to 'New event', new_object_url
+  -#= link_to 'Edit', edit_object_url(event)
+  -#= link_to 'Destroy', object_url(event), :confirm => 'Are you sure?', :method => :delete
+  .paging
+    = will_paginate @events

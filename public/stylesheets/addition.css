@@ -1,0 +1,15 @@
+/* -- Class for form fields with validation errors -- */
+.fieldWithErrors{
+  border: 1px solid red;
+}
+
+/* -- style for ruby debug -- */
+.debug_dump { 
+  text-align: left; 
+  border-top: 1px dashed black;
+  border-bottom: 1px dashed black;
+  color: black; 
+  background: #ccc; 
+  margin: 0; 
+  padding: 1em 0.5em; 
+} 

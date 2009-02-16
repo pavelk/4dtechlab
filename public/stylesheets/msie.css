@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------------------------------------------------------
+
+    Euro RSCG 4D (http://www.eurorscg4d.cz)
+
+    Výstupní zařízení: print
+    Autor:             Lukáš Tomek (lukas.tomek@eurorscg4D.cz)
+    Vytvořeno:         13/01/2009
+
+---------------------------------------------------------------------------------------------------------- */
+
+/* -- IE 6 Hacks -- */
+#sidebar .submenu ul li.active .sub .shadow-bottom { display: none; }
+
+
+.cluetip-techlab,
+#mainMenu { behavior: url('/css/iepngfix.htc'); }

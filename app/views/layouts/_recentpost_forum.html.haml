@@ -1,0 +1,9 @@
+.box.list
+  .h
+    %h3 Recent posts
+  .in
+    %ul
+      - posts.each do |post|
+        %li= link_to(truncate(post.body, :length => 180, :omission => '&hellip;'), forum_topic_posts_path(post.topic.forum, post.topic, :anchor => "post-body-#{post.id}")  ,:class => 'inlink')
+        
+        

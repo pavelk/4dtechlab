@@ -1,0 +1,9 @@
+%h1 New library
+
+= error_messages_for :library
+
+- form_for(:library, :url => collection_url) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p= submit_tag "Create"
+
+= link_to 'Back', collection_url

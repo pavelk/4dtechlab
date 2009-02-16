@@ -1,0 +1,13 @@
+%h2.main Answering question
+= error_messages_for :question
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for(:question, :url => object_url, :html => { :method => :put }) do |f|
+        -#= f.error_messages
+        = render :partial => "form", :locals => { :f => f }
+        = f.hidden_field :active, :value => true
+        = f.submit "Send answer", :class => 'submit'
+= link_to 'Show', object_url
+|
+= link_to 'Back', collection_url
