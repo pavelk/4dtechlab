@@ -1,0 +1,15 @@
+!!! Strict
+%html{ html_attrs('en') }
+  %head
+    %meta{ 'http-equiv' => 'content-type', :content => 'text/html', :charset => 'utf-8' }
+    %meta{ 'http-equiv' => 'content-language', :content => 'en' }
+    %meta{ :name => 'author', :content => 'Euro RSCG 4D Prague' }
+    %meta{ :name => 'copyright', :content => '2008 Euro RSCG 4D' }
+    %meta{ :name => 'description', :content => '4dtechlab is...' }
+    %meta{ :name => 'keywords', :content => 'eurorscg, eurorscg4d' } 
+    %title 4d techlab
+    = stylesheet_link_tag 'application', 'addition', 'jquery.cluetip.css'
+    = stylesheet_link_tag 'print', :media => 'print'
+    /[if IE 6]
+      = stylesheet_link_tag 'msie'
+    = javascript_include_tag :defaults, 'jquery.cluetip.js', 'init.js'
