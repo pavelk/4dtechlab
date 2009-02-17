@@ -4,6 +4,8 @@ class UserSessionsController < ApplicationController
   #before_filter :require_user, :only => :destroy
   skip_before_filter :check_authentication, :except => :destroy
   
+  layout 'public'
+  
   def new
    add_crumb('Login')  
    @user_session = UserSession.new

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   #before_filter :require_user, :only => [:show, :edit, :update, :change_password]
   skip_before_filter :check_authentication, :only => [:new, :create, :registration]
   
+  layout :choose_layout
+  
   def sub_menu
     "submenu_users"
   end
@@ -29,7 +31,6 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user]) 
-    #@user.person = Person.new
     if @user.save
       flash[:notice] = "Account registered!"
       #redirect_back_or_default account_url
@@ -74,5 +75,14 @@ class UsersController < ApplicationController
     add_crumb('People', users_path)
     add_crumb('New registered')
     render :action => "index" 
-  end  
+  end
+
+  private
+    def choose_layout    
+      if [ 'new' ].include? action_name
+        'public'
+      else
+        'application'
+      end
+    end  
 end

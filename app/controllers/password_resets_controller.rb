@@ -4,6 +4,8 @@ class PasswordResetsController < ApplicationController
   skip_before_filter :check_authentication
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
 
+  layout 'public'
+  
   def new
     render
   end

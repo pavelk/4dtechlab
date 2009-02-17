@@ -1,18 +1,10 @@
-%fieldset
-  %legend Please register
-  .in
-    .clearfix
-      .lab
-        = f.label :email, 'E-mail:'
-      .con
-        = f.text_field :email, :class => 'button w100'
-    .clearfix
-      .lab
-        = f.label :password, 'Password:'
-      .con
-        = f.password_field :password
-    .clearfix
-      .lab
-        = f.label :password_confirmation, 'Password confirmation:'
-      .con
-        = f.password_field :password_confirmation
+.clearfix
+  = f.label :email, 'E-mail:'
+  = f.text_field :email, :class => 'button w100'
+.clearfix
+  .col1
+    = f.label :password, 'Password:'
+    = f.password_field :password, :class => 'button pass'
+  .col2
+    = f.label :password_confirmation, 'Password again:'
+    = f.password_field :password_confirmation, :class => 'button pass'

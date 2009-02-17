@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090216144045) do
+ActiveRecord::Schema.define(:version => 20090217130822) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -165,19 +165,19 @@ ActiveRecord::Schema.define(:version => 20090216144045) do
   create_table "users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",               :default => "", :null => false
-    t.string   "crypted_password",    :default => "", :null => false
-    t.string   "password_salt",       :default => "", :null => false
-    t.string   "persistence_token",   :default => "", :null => false
-    t.string   "perishable_token",    :default => "", :null => false
-    t.string   "email",               :default => "", :null => false
-    t.integer  "login_count",         :default => 0,  :null => false
+    t.string   "login",               :default => "",    :null => false
+    t.string   "crypted_password",    :default => "",    :null => false
+    t.string   "password_salt",       :default => "",    :null => false
+    t.string   "persistence_token",   :default => "",    :null => false
+    t.string   "perishable_token",    :default => "",    :null => false
+    t.string   "email",               :default => "",    :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.integer  "posts_count",         :default => 0,  :null => false
+    t.integer  "posts_count",         :default => 0,     :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -191,6 +191,8 @@ ActiveRecord::Schema.define(:version => 20090216144045) do
     t.string   "agency"
     t.string   "user_position"
     t.string   "country"
+    t.boolean  "approved",            :default => false, :null => false
+    t.text     "specify"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -383,10 +383,10 @@ a.overlaid,
   .hp #content .text { width: 399px; height: 253px; padding: 10px 25px; float: right; border: 1px #e2e2e2 solid; border-width: 1px 1px 1px 0; }
   .hp #content .text li { margin-bottom: 10px; color: #333333; }
   .hp #content h2 { margin-bottom: 20px; font-size: 1.8em; }
-  .hp #content .clearfix { padding: 10px 20px 10px; height: auto; }
+  .hp #content .clearfix { padding: 10px 20px 0; height: auto; }
   .hp #content label { color: #fff; }
   .hp #content .button { background-color: #d1d1d1; width: 65%; color: #000 !important; }
-  .hp #content .submit { color: #b7151b; font-weight: bold; background: #fff; padding: 5px 30px; margin-left: 200px; margin-top: 20px; }
+  .hp #content .submit { color: #b7151b; font-weight: bold; background: #fff; padding: 5px 30px; margin-left: 200px; margin-top: 10px; }
   .hp #head { background: none; padding-bottom: 20px; z-index: 5; }
   .hp #head #logo { width: 35%; background: url('../images/bg-hp-head.gif') 100% 0 no-repeat !important; }
   .hp #head ul { float: right; padding: 10px 20px; margin-top: -2em; font-weight: bold; }
