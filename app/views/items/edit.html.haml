@@ -1,0 +1,14 @@
+- content_for :sidebarmenu do
+  = render(:partial => "libraries/libraries", :object => Library.all)
+%h2.main Editing library item
+= error_messages_for :item
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for(:item, :url => object_url, :html => { :method => :put }) do |f|
+        = render :partial => "form", :locals => { :f => f }
+        %p= submit_tag "Update"
+  
+= link_to 'Show', object_url
+|
+= link_to 'Back', collection_url

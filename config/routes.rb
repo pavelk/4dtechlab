@@ -1,10 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :items, :has_many => :comments
+
   map.resources :questions, :member => { :solved => :put }
   map.answered "/answered", :controller => 'questions', :action => "answered"
  
   map.resources :helps, :as => 'help', :has_many => :comments
   
-  map.resources :libraries
+  map.resources :libraries do |library|
+    library.resources :items
+  end
 
 
   map.root :controller => "home"
@@ -36,9 +40,9 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => 'search', :action => 'index', :method => :get      
 
   map.resource :user_session
-  map.resources :users, :member => { :change_password => :get, :registration => :get }, :collection => { :recent => :get }
+  map.resources :users, :as => 'people', :member => { :change_password => :get, :registration => :get, :approved => :put }, :collection => { :recent => :get, :noapproved => :get }
   #map.new_registered "/new_registered", :controller => 'users', :action => "index"
-  map.user_detail 'users/:id/:user', :controller => 'users', :action => 'show', :user => nil
+  map.user_detail 'person/:id/:user', :controller => 'users', :action => 'show', :user => nil
   #map.registration 'users/registration', :controller => 'users', :action => 'registration'
   #map.resource :account, :controller => "users", :member => { :change_password => :get, :user_detail => :get }
   #map.resource :account, :controller => "users", :action => 'new'

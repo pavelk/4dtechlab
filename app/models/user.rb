@@ -26,8 +26,7 @@ class User < ActiveRecord::Base
   end
   
   def approved?
-    #self.login == 'pavel' ? true : false
-    true       
+    self.approved ? true : false    
   end  
   
   def deliver_password_reset_instructions!

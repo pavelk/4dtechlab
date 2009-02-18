@@ -5,6 +5,9 @@
       %h3
         = link_to(help.title, object_url(help), :class => 'inlink')
       %p= help.perex
+      - if_admin? do
+        %ul.actions
+          %li= link_to 'Edit', edit_object_url(help), :class => 'ico edit fr'
 .box.boxForm
   .h
     %h3 Any other question?
@@ -25,5 +28,5 @@
 -#= link_to 'Show', object_url(help)
 -#= link_to 'Edit', edit_object_url(help)
 -#= link_to 'Destroy', object_url(help), :confirm => 'Are you sure?', :method => :delete
-
-= link_to 'New help', new_object_url
+- if_admin? do
+  = link_to 'New help', new_object_url

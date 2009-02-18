@@ -1,0 +1,20 @@
+.box.submenu
+  .h.hidden
+    %h3 Submenu
+  .in
+    %ul
+      - libraries.each_with_index do |library,index|
+        - if(params[:library_id] == "#{library.id.to_s}-#{library.title.parameterize}")
+          - if(index == 0)
+            %li.first.active= "<strong>#{library.title}</strong>"
+          - elsif index == libraries.size
+            %li.last.active= "<strong>#{library.title}</strong>"
+          - else
+            %li.active= "<strong>#{library.title}</strong>"
+        - else
+          - if(index == 0)
+            %li.first= link_to(library.title, library_items_path(library))
+          - elsif index == libraries.size
+            %li.last= link_to(library.title, library_items_path(library))
+          - else
+            %li= link_to(library.title, library_items_path(library))      

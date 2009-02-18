@@ -31,3 +31,14 @@
     .clearfix
       .lab Country
       .con= @user.country
+%br
+- if_admin? do
+  -if !@user.has_role?('admin')
+    %p
+      = @user.specify
+    - form_for @user, :url => approved_user_path do |f|
+      .clearfix
+        .con.radio
+          = f.check_box :approved
+          = f.label :approved
+      = f.submit "Approve user", :class => 'submit'

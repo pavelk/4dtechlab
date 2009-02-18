@@ -1,10 +1,12 @@
 - content_for :sidebarmenu do
-  -#= render(:partial => "library", :collection => @libraries)
-  = render(:partial => "libraries", :object => @libraries)
+  -#= render(:partial => "libraries/libraries", :object => @library)
+  = render(:partial => "libraries/libraries", :object => Library.all)
 - content_for :box_1 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
-%h2.main Library
-%p.counter= "Found #{@items.size} articles"
+%h2.main
+  Library / 
+  = @library.title
+%p.counter= "Found #{@items.total_entries} articles"
 .box.boxArticles
   - @items.each_with_index do |item,index|
     - if(index == 0)
@@ -30,20 +32,3 @@
 -#= link_to 'Edit', edit_object_url(item)
 -#= link_to 'Destroy', object_url(item), :confirm => 'Are you sure?', :method => :delete
 =link_to 'New item', new_object_url
-
-
--#%h1 Listing libraries
-
--#%table
-  -#%tr
-  -#- @libraries.each do |library|
-    -#%tr
-      -#%td{:colspan => 3}= library.title 
-    -#%tr
-      -#%td= link_to 'Show', object_url(library)
-      -#%td= link_to 'Edit', edit_object_url(library)
-      -#%td= link_to 'Destroy', object_url(library), :confirm => 'Are you sure?', :method => :delete
-
--#%br/
-
--#=link_to 'New library', new_object_url

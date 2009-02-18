@@ -7,12 +7,24 @@ module ApplicationHelper
   
   def main_tab_for(name, options = {})
       link_to_unless_current(name, options) do
-        "<li class=\"active\"><strong>#{name}</strong></li>"
+        if(name == "Help")
+           "<li class=\"active fr\"><strong>#{name}</strong></li>" 
+        else
+          "<li class=\"active\"><strong>#{name}</strong></li>"
+        end
       end
   end
 
   def first_item(index)
     index == 0 ? '.item.first' : '.item'
+  end
+  
+  def layout_link_to(link_text, path)
+      curl = url_for(:controller => request.path_parameters['controller'],
+                            :action => request.path_parameters['action'])
+      html = ''
+      options = path == curl ? {:class => 'current'} : {}
+      html << content_tag("li", link_to(link_text, path, options))
   end
   
   def navigation(*links)

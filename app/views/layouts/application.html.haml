@@ -35,24 +35,22 @@
             - else
               %ul
                 %li
-          #subMenu
-            = yield :submenu
+          -##subMenu
+            -#= yield :submenu
           %ul#topMenu
             - if !current_user
               %li= link_to "Log In", new_user_session_path
               %li.alt= link_to "Register", new_user_path
             - else
-              %li= link_to "My profile", edit_user_path(current_user)
+              %li= link_to("My profile", user_detail_path(:id => current_user, :title => current_user.login.parameterize))
               %li.add
                 %a.overlaid{ :href => '' }Add item<span></span>
                 .cont
                   %ul
                     %li
                       %a{ :href => '' }Add Project showcase
-                    %li
-                      %a{ :href => '' }Add Library Item
-                    %li
-                      %a{ :href => '' }Create New Forum Topic
+                    %li= link_to 'Add Library Item', new_library_item_path(Library.first)
+                    %li= link_to 'Add Event', new_event_path
                   .bottom
               %li.messages
                 -#%a{ :href => '' }Private messages:
@@ -67,15 +65,13 @@
       #content.holder
         #sidebar
           = yield :sidebarmenu 
-          /domluvit s Lukasem default sirku
           .box.tagCloud
-          /domluvit s Lukasem default sirku
           = yield :box_1
           = yield :box_2
         %hr.hidden
         #contentBlock
           - if ENV["RAILS_ENV"] == "development" 
-            -#= debug(params)
+            = debug(params)
             -#= controller.sub_navigation
             -#= @active_tab
           -#%h2.main What is new here

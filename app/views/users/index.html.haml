@@ -1,11 +1,12 @@
 %h2.main Find people
 %p.counter
   Found
-  %strong= @users.size
+  %strong= @users.total_entries
   profiles
 .box.boxPeople
   = render(:partial => 'person', :collection => @users)
-.paging        
+.paging
+  = will_paginate @users
 
 -#= link_to 'Show', user
 -#= link_to 'Edit', edit_user_path(user)

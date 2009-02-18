@@ -1,5 +1,4 @@
 class HelpsController < ResourceController::Base
-  before_filter :load_comments, :only => :show
   
   def sidebar_menu
     "sidebarmenu_help"
@@ -26,11 +25,6 @@ class HelpsController < ResourceController::Base
 #  end
 
   private
-    
-    def load_comments
-      @comments = Comment.find(:all, :conditions => ["commentary_id = ? AND commentary_type = ?", params[:id], 'Help' ], :order => 'created_at DESC')
-    end
-
     def collection
       @collection ||= end_of_association_chain.paginate :page => params[:page], :per_page => 10
     end  

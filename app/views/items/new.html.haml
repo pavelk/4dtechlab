@@ -1,0 +1,12 @@
+- content_for :sidebarmenu do
+  = render(:partial => "libraries/libraries", :object => Library.all)
+%h2.main New library item
+= error_messages_for :item
+.cols.cols2v1
+  .col1
+    .box.profileForm.formBox
+      - form_for(:item, :url => collection_url) do |f|
+        = render :partial => "form", :locals => { :f => f }
+        %p= submit_tag "Create"
+
+= link_to 'Back', collection_url

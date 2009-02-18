@@ -31,7 +31,7 @@ class EventsController < ResourceController::Base
      
   private
     def set_user
-      @event.user_id = current_user
+      @event.user_id = current_user.id
     end
     
     def load_date

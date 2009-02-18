@@ -1,7 +1,7 @@
 class CommentsController < ResourceController::Base
   
   belongs_to :event
-  #belongs_to :help
+  belongs_to :item
   
   #set user for post
   create.before :set_user

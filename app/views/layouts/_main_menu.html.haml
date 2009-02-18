@@ -4,8 +4,11 @@
   -#%li
     -#%a{ :href => '' }Library
   -#%li= link_to 'Library', libraries_path
+  %li= main_tab_for('Library', libraries_path)
   -#%li= link_to 'Forum', forums_path
   %li= main_tab_for('Forum', forums_path)
+  -#= layout_link_to "Forum", forums_path
   %li= main_tab_for('People', users_path)
   %li= main_tab_for('Events', events_all_path(:year => Time.now.year, :month => Time.now.month))
+  -#= layout_link_to "Events", events_path
   %li.fr= main_tab_for('Help', helps_path)
