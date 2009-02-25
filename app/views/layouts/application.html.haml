@@ -42,7 +42,7 @@
               %li= link_to "Log In", new_user_session_path
               %li.alt= link_to "Register", new_user_path
             - else
-              %li= link_to("My profile", user_detail_path(:id => current_user, :title => current_user.login.parameterize))
+              %li= link_to("My profile", user_detail_path(:id => current_user, :title => current_user.full_name.parameterize))
               %li.add
                 %a.overlaid{ :href => '' }Add item<span></span>
                 .cont
