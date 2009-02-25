@@ -33,19 +33,19 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
   end
-=begin 
+
   def deliver_init_mail_to_user
-    Notifier.deliver_mail_sent_to_user
+    Notifier.deliver_mail_sent_to_user(self)
   end
   
   def deliver_init_mail_to_admin
     Notifier.deliver_mail_sent_to_admin(self)
   end
   
-  def deliver_activation_info_to_user
+  #def deliver_activation_info_to_user
     
-  end
-=end 
+  #end
+
   
   has_attached_file :avatar, :styles => { :small => "78x100#", :forum => "47x60#" },
                     :url  => "/assets/avatars/:id/:style/:basename.:extension",
