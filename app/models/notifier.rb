@@ -30,12 +30,12 @@ class Notifier < ActionMailer::Base
     body :user_url => user_path(user)
   end
   
-  def activation(user)
-    subject "4dtechlab - aktivace uctu"
-    from "4d Techlab Notifier <noreply@4dtechlab.com>"
-    headers "Reply-to" => "info@4dtechlab.com"
-    recipients user.email
-    sent_on Time.now
-  end
+#  def activation(user)
+#    subject "4dtechlab - aktivace uctu"
+#    from "4d Techlab Notifier <noreply@4dtechlab.com>"
+#    headers "Reply-to" => "info@4dtechlab.com"
+#    recipients user.email
+#    sent_on Time.now
+#  end
 end
 deliver_activation
