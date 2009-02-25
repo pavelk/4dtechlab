@@ -38,4 +38,3 @@ class Notifier < ActionMailer::Base
 #    sent_on Time.now
 #  end
 end
-deliver_activation

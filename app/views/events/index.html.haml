@@ -7,7 +7,7 @@
 %p.counter= "Found #{@events.total_entries} articles"
 .box.boxArticles
   - @events.each_with_index do |event,index|
-    - if(index == 0)
+    - if(index > 0)
       .item.first
         -#= first_item(index)
         -#%h3= link_to event.title, object_url(event)
