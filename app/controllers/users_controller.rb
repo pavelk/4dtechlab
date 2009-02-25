@@ -41,8 +41,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Account registered!"
       #redirect_back_or_default account_url
       #redirect_to root_url
-      deliver_init_mail_to_user
-      deliver_init_mail_to_admin
+      @user.deliver_init_mail_to_user
+      @user.deliver_init_mail_to_admin
       redirect_to registration_user_path(@user)
     else
       #render :action => :new
