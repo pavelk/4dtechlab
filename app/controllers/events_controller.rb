@@ -34,6 +34,16 @@ class EventsController < ResourceController::Base
       format.html { redirect_to(@event) }
     end  
   end
+  
+  def add_file
+    @event = Event.find(params[:id])
+    @file = FileAtt.new(params[:file_att])
+    @event.file_atts << @file
+  
+    respond_to do |format|
+      format.html { redirect_to(@event) }
+    end  
+  end  
  
   def tag
     @tag = Event.find_tagged_with(params[:id])

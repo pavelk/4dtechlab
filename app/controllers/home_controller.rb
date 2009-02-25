@@ -6,6 +6,12 @@ class HomeController < ApplicationController
     @month_events = Event.monthly_events(@date)
   end
   
+  def tag
+    @tags = Item.tag_counts + Event.tag_counts
+    @tag = Event.find_tagged_with(params[:id]) + Item.find_tagged_with(params[:id])
+    @month_events = Event.monthly_events(@date)
+  end
+  
   
   private
     def load_date

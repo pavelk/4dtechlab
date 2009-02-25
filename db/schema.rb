@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090223071550) do
+ActiveRecord::Schema.define(:version => 20090225121937) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(:version => 20090223071550) do
 
   add_index "events", ["event_date"], :name => "index_events_on_event_date"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
+
+  create_table "file_atts", :force => true do |t|
+    t.integer  "attachable_id"
+    t.string   "title"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_att_file_name"
+    t.string   "file_att_content_type"
+    t.integer  "file_att_file_size"
+    t.datetime "file_att_updated_at"
+  end
+
+  add_index "file_atts", ["attachable_id", "attachable_type"], :name => "index_file_atts_on_attachable_id_and_attachable_type"
 
   create_table "forums", :force => true do |t|
     t.datetime "created_at"

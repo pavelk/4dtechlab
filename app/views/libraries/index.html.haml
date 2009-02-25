@@ -9,27 +9,28 @@
   - @items.each_with_index do |item,index|
     - if(index == 0)
       .item.first
-        %h3= link_to item.title, object_url(item)
+        %h3= link_to item.title, library_item_path(item.library.id, item)
         -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
         .self
           %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
         %ul.actions
-          %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
+          %li= link_to 'Edit', edit_library_item_path(item.library.id, item), :class => 'ico edit'
     - else
       .item
-        %h3= link_to item.title, object_url(item)
+        %h3= link_to item.title, library_item_path(item.library.id, item)
         -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
         .self
           %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
         %ul.actions
-          %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
+          %li= link_to 'Edit', edit_library_item_path(item.library.id, item), :class => 'ico edit'
 .paging
   = will_paginate @items
 
 -#= link_to 'Show', object_url(item)
 -#= link_to 'Edit', edit_object_url(item)
 -#= link_to 'Destroy', object_url(item), :confirm => 'Are you sure?', :method => :delete
-=link_to 'New item', new_object_url
+-if current_user.has_role?('admin')
+  =link_to 'New library', new_object_url
 
 
 -#%h1 Listing libraries

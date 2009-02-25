@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_session_url
         return false
       else
-        #check_authorization
+        check_authorization
       end  
     end
     

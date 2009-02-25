@@ -29,18 +29,13 @@ class Notifier < ActionMailer::Base
     #content_type = "text/plain"
     body :user_url => user_path(user)
   end
-end
-
-=begin
-  def registration_confirmation( email, password )
-    #@recipients   = email
-    #@from         = "info@autanasbavi.cz"
-    headers         "Reply-to" => "info@autanasbavi.cz"
-    #@subject      = "www.autanasbavi.cz"
-    #@sent_on      = Time.now
-    #@content_type = "text/html"
- 
-    body[:email] = email
-    body[:password] = password
+  
+  def activation(user)
+    subject "4dtechlab - aktivace uctu"
+    from "4d Techlab Notifier <noreply@4dtechlab.com>"
+    headers "Reply-to" => "info@4dtechlab.com"
+    recipients user.email
+    sent_on Time.now
   end
-=end  
+end
+deliver_activation

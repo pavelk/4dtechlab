@@ -24,8 +24,9 @@
           .img= link_to(image_tag(event.photos[0].photo.url(:thumb)), events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday))
         .self
           %p= truncate(event.perex, :length => 180, :omission => '&hellip;')
-        %ul.actions
-          %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'
+        -if current_user.has_role?('admin') || current_user.id == event.user_id   
+          %ul.actions
+            %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'
     - else
       .item
         %h3= link_to event.title, events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday)
@@ -42,8 +43,9 @@
           .img= link_to(image_tag(event.photos[0].photo.url(:thumb)), events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday))
         .self
           %p= truncate(event.perex, :length => 180, :omission => '&hellip;')
-        %ul.actions
-          %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'  
+        -if current_user.has_role?('admin') || current_user.id == event.user_id     
+          %ul.actions
+            %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'  
   =link_to 'New event', new_object_url
   -#= link_to 'Edit', edit_object_url(event)
   -#= link_to 'Destroy', object_url(event), :confirm => 'Are you sure?', :method => :delete

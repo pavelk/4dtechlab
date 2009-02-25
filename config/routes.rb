@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.connect 'events/:year/:month/:day/:id', :controller => 'events',
   #    :month => nil, :day => nil, :requirements => { :year => /\d{4}/ }
-  map.resources :events, :has_many => :comments, :member => { :add_photo => :put, :remove_photo => :delete }
+  map.resources :events, :has_many => :comments, :member => { :add_photo => :put, :add_file => :put, :remove_photo => :delete }
 
   map.events_all 'events/:year/:month', :controller => 'events', :action => 'index',
                   :month => nil, :requirements => { :year => /\d{4}/ }
