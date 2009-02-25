@@ -71,7 +71,7 @@
         %hr.hidden
         #contentBlock
           - if ENV["RAILS_ENV"] == "development" 
-            = debug(params)
+            -#= debug(params)
             -#= controller.sub_navigation
             -#= @active_tab
           -#%h2.main What is new here

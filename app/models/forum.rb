@@ -1,5 +1,6 @@
 class Forum < ActiveRecord::Base
   
+  #
   has_many :topics, :dependent => :nullify
   has_many :posts, :through => :topics
   has_one  :recent_post, :through => :topics, :source => :posts, :order => "created_at DESC"

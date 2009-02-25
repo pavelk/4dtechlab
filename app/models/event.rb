@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments, :as => :commentary, :dependent => :delete_all
+  has_many :photos, :as => :attachable, :dependent => :destroy
   
   validates_presence_of :title, :perex
   validates_uniqueness_of :title

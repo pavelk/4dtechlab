@@ -243,6 +243,7 @@ a.overlaid,
            #contentBlock .boxArticles .item .self { margin-left: 90px; padding-right: 90px; }
            #contentBlock .boxArticles .item .actions { position: absolute; text-align: right; width: 70px; right: 15px; top: 12px; }
            #contentBlock .boxArticles .item .actions li { margin-bottom: 8px; }
+           #contentBlock .boxArticles .noImg .self { margin-left: 0; padding-right: 0;}
            
            #contentBlock .boxArticle { margin-top: -18px; }
            #contentBlock .boxArticle .item { padding: 0 60px 12px 0px; }

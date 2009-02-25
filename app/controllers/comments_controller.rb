@@ -1,9 +1,7 @@
 class CommentsController < ResourceController::Base
   
-  belongs_to :event
-  belongs_to :item
+  belongs_to :event, :item
   
-  #set user for post
   create.before :set_user
   
   #redirect to the parent post's show method 

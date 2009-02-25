@@ -23,7 +23,17 @@ class EventsController < ResourceController::Base
     else
       @event = Event.find(params[:id])     
     end
-  end  
+  end
+
+  def add_photo
+    @event = Event.find(params[:id])
+    @photo = Photo.new(params[:photo])
+    @event.photos << @photo
+  
+    respond_to do |format|
+      format.html { redirect_to(@event) }
+    end  
+  end
  
   def tag
     @tag = Event.find_tagged_with(params[:id])

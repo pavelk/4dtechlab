@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090217154958) do
+ActiveRecord::Schema.define(:version => 20090223071550) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -92,6 +92,20 @@ ActiveRecord::Schema.define(:version => 20090217154958) do
     t.text     "request"
     t.datetime "created_at"
   end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "attachable_id"
+    t.string   "title"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "photos", ["attachable_id", "attachable_type"], :name => "index_photos_on_attachable_id_and_attachable_type"
 
   create_table "posts", :force => true do |t|
     t.datetime "created_at"

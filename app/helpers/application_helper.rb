@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def first_item(index)
-    index == 0 ? '.item.first' : '.item'
+    #index == 0 ? %div{:class => \'item first\'} : %div{:class => \'item\'}
   end
   
   def layout_link_to(link_text, path)
