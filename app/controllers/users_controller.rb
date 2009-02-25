@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       if(params[:user][:approved] == "1")
         flash[:notice] = "Account approved!"
-        @user.deliver_activation_info_to_user
+        #@user.deliver_activation_info_to_user
         #poslat mail -> activate
       else
         flash[:notice] = "Account disabled!"
