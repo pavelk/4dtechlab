@@ -2,9 +2,9 @@
 
     Euro RSCG 4D (http://www.eurorscg4d.cz)
 
-    Výstupní zařízení: screen, projection
-    Autor:             Lukáš Tomek (lukas.tomek@eurorscg4D.cz)
-    Vytvořeno:         20/07/2008
+    Vystupni zarizeni: screen, projection
+    Autor:             Lukas Tomek (lukas.tomek@eurorscg4D.cz)
+    Vytvoreno:         20/07/2008
 
 ---------------------------------------------------------------------------------------------------------- */
 
@@ -230,14 +230,18 @@ a.overlaid,
   
   #content #contentBlock { width: 705px; float: left; padding: 15px 0 15px 35px; font-size: 1.1em; }
            #contentBlock h2.main { font-size: 1.3em; margin-bottom: 1em; }
+           #contentBlock h2.main .small { font-size: .7em; color: #666666; }
+           #contentBlock h2.main .new { font-size: .7em; color: #666666; padding-left: 10px; }
            #contentBlock h2.article { margin: 0 !important; }
            #contentBlock .navi { color: #a0a0a0; font-size: .9em; text-align: right; margin-bottom: 1em; }
            #contentBlock .navi a { color: #a0a0a0; }
            #contentBlock .counter { color: #666666; font-size: .9em; padding: 10px 5px; }
   
            #contentBlock .boxArticles { width: 100%; }
-           #contentBlock .boxArticles .first { background-color: #f3f3f3 !important; }
+           #contentBlock .boxArticles .first {  }
+           #contentBlock .boxArticles .first h3 { font-size: 1.6em !important; }
            #contentBlock .boxArticles .item { position: relative; overflow: hidden; margin-bottom: 15px; padding: 10px 60px 12px 12px; }
+           #contentBlock .boxArticles .item h3 { font-size: 1.2em; }
            #contentBlock .boxArticles .item .info { margin: 5px 0 15px; color: #000 !important; }
            #contentBlock .boxArticles .item .img { float: left; width: 70px; }
            #contentBlock .boxArticles .item .self { margin-left: 90px; padding-right: 90px; }
@@ -368,9 +372,9 @@ a.overlaid,
            .error, .warning { border-color: #c2151a; background-color: #f9cfcf; }
            .notice, .message { border-color: #18760e; background-color: #e5ffcb; }
   
-  #foot p.foot { float: right; width: 734px; height: 26px; padding: 13px 15px 0; color: #fff; text-align: right; background-color: #333333; }
-  #foot a.euro { width: 226px; height: 39px; float: left; text-align: center; line-height: 40px; }
-  #foot a.euro span { background: url('../images/bg-footer-logo.gif') 50% 50% no-repeat; }
+  #foot p.foot { float: right; width: 734px; padding: 10px 15px 8px; text-align: right; background-color: #333333; }
+  #foot p.foot a { display: block; padding: 5px 30px 5px 0; float: right; color: #fff; text-decoration: none; background: url('../images/bg-foot-euro.gif') 100% 0 no-repeat; }
+  #foot p.foot a:hover { color: #fff !important; }
 
 
   /* HP login */

@@ -3,8 +3,11 @@
 - content_for :box_2 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main Events 
-/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
-%p.counter= "Found #{@events.total_entries} articles"
+%p.counter
+  - if(@events.total_entries > 0)
+    = "Found #{@events.total_entries} events"
+  - else
+    No Events at this date. Please use the calendar to find your Event.
 .box.boxArticles
   - @events.each_with_index do |event,index|
     - if(index > 0)

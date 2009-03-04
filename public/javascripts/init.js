@@ -1,19 +1,3 @@
-window.onload = init;
-function init() {
-	document.onclick = hideElements;
-}
-
-function hideElements(e) {
-	if (document.all) e = event;
-	if (e.target) source = e.target;
-	else if (e.srcElement) source = e.srcElement;
-	if (source.nodeType == 3) source = source.parentNode;
-
-	if (source.tagName.toLowerCase() != 'input') {
-    $("#search .phrases").addClass("hidden");
-  }
-}
-
 $(document).ready(function(){
   
   // search button value
@@ -38,6 +22,20 @@ $(document).ready(function(){
     return false;
   });
   
+  // add item na hover
+  $(".main").hover(
+    function() {
+      $(this).find("a.new").show();
+    }, 
+    function() {
+      $(this).find("a.new").hide();
+    }
+  );
+  
+  // skryvani potvrzovacih hlasek
+  $(".notice").wait(3000).fadeOut();
+  $(".message").wait(3000).fadeOut();
+  
   // calendar tooltip
   $(".tooltip").cluetip({
     splitTitle: '|',
@@ -56,3 +54,21 @@ $(document).ready(function(){
     }
   });
 });
+
+window.onload = init;
+function init() {
+	document.onclick = hideElements;
+}
+
+function hideElements(e) {
+	if (document.all) e = event;
+	if (e.target) source = e.target;
+	else if (e.srcElement) source = e.srcElement;
+	if (source.nodeType == 3) source = source.parentNode;
+	
+	if (source.tagName.toLowerCase() != 'input') {
+    $("#search .phrases").addClass("hidden");
+  }
+  
+  return false;
+}

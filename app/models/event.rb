@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   acts_as_taggable
   
   def self.per_page
-    4
+    10
   end
   
   belongs_to :user

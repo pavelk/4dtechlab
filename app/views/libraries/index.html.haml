@@ -3,7 +3,7 @@
   = render(:partial => "libraries", :object => @libraries)
 - content_for :box_1 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
-%h2.main Library
+%h2.main Tools library
 %p.counter= "Found #{@items.size} articles"
 .box.boxArticles
   - @items.each_with_index do |item,index|

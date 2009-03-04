@@ -23,7 +23,7 @@ class TopicsController < ResourceController::Base
     def save_first_post
       @post = Post.new(:body => params[:post][:body], 
                        :topic_id => @topic.id, 
-                       :user_id => current_user)
+                       :user_id => current_user.id)
       @post.save!
     end
 

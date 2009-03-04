@@ -3,8 +3,6 @@
 - content_for :box_2 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags})  
 %h2.main= @event.title
-%p.navi &nbsp;
-/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
 .box.boxArticles.boxArticle
   .item
     %p.info 
@@ -66,7 +64,7 @@
       .item
         .head
           %h4
-            = comment.user.login 
+            = link_to(comment.user.full_name, user_detail_path(:id => comment.user, :user => comment.user.full_name.parameterize))
             | 
             = comment.title
           %p= distance_of_time_in_words_to_now(comment.created_at)

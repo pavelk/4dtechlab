@@ -1,7 +1,7 @@
 %tr
-  %td.vat.c1
-    %img.icon.grey{:alt => 'Comment', :title => 'No recent activity', :src => '/images/forum/comment.gif'}
-  %td.c2.vat
+  -#%td.vat.c1
+    -#%img.icon.grey{:alt => 'Comment', :title => 'No recent activity', :src => '/images/forum/comment.gif'}
+  %td.c1.vat
     = link_to(forum_post.title, forum_topics_path(forum_post), :class => 'title')
     .posts 
       = forum_post.topics.size

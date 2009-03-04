@@ -5,7 +5,7 @@
 .forum
   %table.wide.forums{:cellspacing => 0, :cellpadding => 0}
     %tr
-      %th.la{:width => '70%', :colspan => 3}Forum
+      %th.la{:width => '70%', :colspan => 2}Forum Categories
       %th.la{:width => '30%', :colspan => 1}Last Post
     = render(:partial => "forum_post", :collection => @forums)
   -#%p= link_to('Recent Posts', forums_path)
