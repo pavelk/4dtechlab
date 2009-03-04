@@ -2,5 +2,5 @@
   %h3.hidden Submenu
   %ul
     %li= link_to("Find people", users_path)
-    %li= link_to("My profile", user_detail_path(:id => current_user, :title => current_user.login.parameterize))
+    %li= link_to("My profile", user_detail_path(:id => current_user, :title => current_user.full_name.parameterize))
     %li= link_to("Change password", change_password_user_path(current_user))

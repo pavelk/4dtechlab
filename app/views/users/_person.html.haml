@@ -2,7 +2,10 @@
   %h3= link_to(person.full_name, user_detail_path(:id => person, :user => person.full_name.parameterize))
   .img= link_to(image_tag(person.avatar.url(:small)), user_detail_path(:id => person, :user => person.full_name.parameterize))
   .self
-    %p=person.user_position
-    %p=person.country
+    %p= person.user_position
+    %p= person.country
+    - if(current_user == person)
+      %p= link_to "Edit my profile", edit_user_path(person)
+      %p= link_to("Change password", change_password_user_path(person))
     -#.rating
       -#%span.star3

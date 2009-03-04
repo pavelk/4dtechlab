@@ -38,7 +38,12 @@
       = @user.specify
     - form_for @user, :url => approved_user_path do |f|
       .clearfix
-        .con.radio
-          = f.check_box :approved
-          = f.label :approved
-      = f.submit "Approve user", :class => 'submit'
+        -#.con.radio
+          -#= f.check_box :approved
+          -#= f.label :approved
+      - if(@user.approved)
+        = f.hidden_field(:approved, :value => '0')
+        = f.submit "Disable user", :class => 'submit'
+      - else
+        = f.hidden_field(:approved, :value => '1')
+        = f.submit "Approve user", :class => 'submit'

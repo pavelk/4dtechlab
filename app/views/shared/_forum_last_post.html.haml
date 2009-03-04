@@ -4,5 +4,5 @@
   %br
   by
   %strong
-    = recent_post.user.login
+    = recent_post.user.full_name
   %span= link_to('view', forum_topic_posts_path(forum,recent_post.topic, :anchor => "post-body-#{recent_post.id}"))

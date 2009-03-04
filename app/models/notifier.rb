@@ -14,6 +14,7 @@ class Notifier < ActionMailer::Base
   def mail_sent_to_user(user)
     subject "4dtechlab - Vas ucet byl uspesne vytvoren"
     from "4d Techlab Notifier <noreply@4dtechlab.com>"
+    headers "Reply-to" => "noreply@4dtechlab.com"
     recipients user.email
     sent_on Time.now
     body[:email] = user.email
