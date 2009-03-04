@@ -70,5 +70,5 @@ function hideElements(e) {
     $("#search .phrases").addClass("hidden");
   }
   
-  return false;
+  //return false;
 }

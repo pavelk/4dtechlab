@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
     roles.detect{ |role| role.has_right_for?(action_name, controller_name) }
   end
   
-  def approved?
-    self.approved ? true : false    
-  end  
+#  def approved?
+#    self.approved ? true : false    
+#  end  
   
   def deliver_password_reset_instructions!
     reset_perishable_token!

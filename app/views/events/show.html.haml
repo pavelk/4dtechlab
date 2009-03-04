@@ -23,19 +23,19 @@
       %strong
         Tags: 
         =@event.tag_list.join(", ")
-  .files
-    %ul
-      - @event.file_atts.each do |file|
-        %li
-          = link_to file.file_att_file_name, file.file_att.url
-          = " (#{number_to_human_size(file.file_att_file_size)})"
-  .clearfix
-    - form_for @event, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
+  -#.files
+    -#%ul
+      -#- @event.file_atts.each do |file|
+        -#%li
+          -#= link_to file.file_att_file_name, file.file_att.url
+          -#= " (#{number_to_human_size(file.file_att_file_size)})"
+  -#.clearfix
+    -#- form_for @event, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
       -#= f.file_field :photo
-      %input{ :type => 'file', :name => 'file_att[file_att]' }
-      %br
-      %br
-      = f.submit "Add file", :class => 'submit'
+      -#%input{ :type => 'file', :name => 'file_att[file_att]' }
+      -#%br
+      -#%br
+      -#= f.submit "Add file", :class => 'submit'
   .gallery
     - @event.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
