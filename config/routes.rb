@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :helps, :as => 'help', :has_many => :comments
   
   map.resources :libraries do |library|
-    library.resources :items
+    library.resources :items, :member => { :add_photo => :put, :add_file => :put }
   end
 
 

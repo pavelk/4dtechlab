@@ -10,11 +10,12 @@ class Help < ActiveRecord::Base
     self.class.increment_counter :hits, id
   end
   
-    #indexes for Sphinx
+  #indexes for Sphinx
   define_index do
     indexes title
     indexes perex
     indexes description
+    set_property :delta => true
   end
   
   def to_param

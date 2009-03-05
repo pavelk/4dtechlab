@@ -15,6 +15,26 @@ class ItemsController < ResourceController::Base
     @tag = Item.find_tagged_with(params[:id])
   end
   
+  def add_photo
+    @item = Item.find(params[:id])
+    @photo = Photo.new(params[:photo])
+    @item.photos << @photo
+  
+    respond_to do |format|
+      format.html { redirect_to(@item) }
+    end  
+  end
+  
+  def add_file
+    @item = Item.find(params[:id])
+    @file = FileAtt.new(params[:file_att])
+    @item.file_atts << @file
+  
+    respond_to do |format|
+      format.html { redirect_to(@item) }
+    end  
+  end
+  
   private
     def set_user_and_parent
       @item.user_id = current_user.id

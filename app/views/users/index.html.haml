@@ -1,8 +1,6 @@
-%h2.main Find people
-%p.counter
-  Found
-  %strong= @users.total_entries
-  profiles
+%h2.main 
+  Find people
+  %span.small= "(#{@users.total_entries} profiles)"
 .box.boxPeople
   = render(:partial => 'person', :collection => @users)
 .paging

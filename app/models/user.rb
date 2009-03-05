@@ -6,11 +6,14 @@ class User < ActiveRecord::Base
   
   acts_as_authentic :login_field_type => 'email', :login_field => 'email'
   
+  validates_presence_of :first_name, :last_name, :agency
+  
   #indexes for Sphinx
   define_index do
     indexes email
     indexes first_name
     indexes last_name
+    set_property :delta => true
   end
    
   named_scope :new_registered, :limit => 10, :order => 'created_at DESC'

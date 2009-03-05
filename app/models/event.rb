@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :as => :commentary, :dependent => :delete_all
   has_many :photos, :as => :attachable, :dependent => :destroy
-  has_many :file_atts, :as => :attachable, :dependent => :destroy
+  #has_many :file_atts, :as => :attachable, :dependent => :destroy
   
   validates_presence_of :title, :perex
   validates_uniqueness_of :title
@@ -18,6 +18,9 @@ class Event < ActiveRecord::Base
     indexes title
     indexes perex
     indexes description
+    indexes user.first_name
+    indexes user.last_name
+    set_property :delta => true
   end
   
   named_scope :period_events,
@@ -35,5 +38,13 @@ class Event < ActiveRecord::Base
   def to_param
       "#{id}-#{title.parameterize}"
   end
+  
+  has_attached_file :eventphoto, :styles => { :thumb => "70x66#" },
+                    :url  => "/assets/eventphotos/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/eventphotos/:id/:style/:basename.:extension"
+
+  #validates_attachment_presence :avatar
+  validates_attachment_size :eventphoto, :less_than => 1.megabytes
+  validates_attachment_content_type :eventphoto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
   
 end

@@ -6,23 +6,27 @@
 %h2.main
   Tools library / 
   = @library.title
-%p.counter= "Found #{@items.total_entries} articles"
+  - if(@items.total_entries > 0)
+    %span.small= "(#{@items.total_entries} articles)"
+  - else
+    %span.small (No Articles in this category.)
+  =link_to 'New item', new_object_url, :class => 'new hidden'
 .box.boxArticles
   - @items.each_with_index do |item,index|
-    - if(index == 0)
-      .item.first
-        %h3= link_to item.title, object_url(item)
-        -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
-        .self
-          %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
-        %ul.actions
-          %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
-    - else
-      .item
-        %h3= link_to item.title, object_url(item)
-        -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
-        .self
-          %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
+    %div{:class => "item #{index == 0 ? 'first' : nil}"}
+      %h3= link_to item.title, object_url(item)
+      %p.info 
+        = distance_of_time_in_words_to_now(item.created_at)
+        by
+        = link_to(item.user.full_name, user_detail_path(:id => item.user, :user => item.user.full_name.parameterize))
+        ,
+        = item.comments.size
+        Comments
+      .img= link_to(image_tag(item.itemphoto.url(:thumb)), object_url(item))
+      .self
+        %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
+        = link_to 'Read full article', object_url(item)
+      -if current_user.has_role?('admin') || current_user.id == item.user_id   
         %ul.actions
           %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
 .paging

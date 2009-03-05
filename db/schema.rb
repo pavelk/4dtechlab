@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090225121937) do
+ActiveRecord::Schema.define(:version => 20090305115327) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
     t.string   "commentary_type"
     t.string   "title"
     t.text     "comment"
+    t.boolean  "delta",           :default => false, :null => false
   end
 
   add_index "comments", ["commentary_id", "commentary_type"], :name => "index_comments_on_commentary_id_and_commentary_type"
@@ -28,13 +29,18 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "title",       :default => "",    :null => false
-    t.string   "perex",       :default => "",    :null => false
+    t.string   "title",                   :default => "",    :null => false
+    t.string   "perex",                   :default => "",    :null => false
     t.string   "location"
     t.string   "link"
     t.text     "description"
     t.datetime "event_date"
-    t.boolean  "approved",    :default => false, :null => false
+    t.boolean  "approved",                :default => false, :null => false
+    t.string   "eventphoto_file_name"
+    t.string   "eventphoto_content_type"
+    t.integer  "eventphoto_file_size"
+    t.datetime "eventphoto_updated_at"
+    t.boolean  "delta",                   :default => false, :null => false
   end
 
   add_index "events", ["event_date"], :name => "index_events_on_event_date"
@@ -65,10 +71,11 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
   create_table "helps", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",       :default => "", :null => false
-    t.string   "perex",       :default => "", :null => false
+    t.string   "title",       :default => "",    :null => false
+    t.string   "perex",       :default => "",    :null => false
     t.text     "description"
-    t.integer  "hits",        :default => 0,  :null => false
+    t.integer  "hits",        :default => 0,     :null => false
+    t.boolean  "delta",       :default => false, :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -76,12 +83,17 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "library_id"
-    t.string   "title",       :default => "",    :null => false
-    t.string   "perex",       :default => "",    :null => false
+    t.string   "title",                  :default => "",    :null => false
+    t.string   "perex",                  :default => "",    :null => false
     t.string   "link"
     t.text     "description"
     t.datetime "event_date"
-    t.boolean  "approved",    :default => false, :null => false
+    t.boolean  "approved",               :default => false, :null => false
+    t.boolean  "delta",                  :default => false, :null => false
+    t.string   "itemphoto_file_name"
+    t.string   "itemphoto_content_type"
+    t.integer  "itemphoto_file_size"
+    t.datetime "itemphoto_updated_at"
   end
 
   add_index "items", ["library_id"], :name => "index_items_on_library_id"
@@ -127,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
     t.integer  "topic_id"
     t.integer  "user_id"
     t.text     "body"
+    t.boolean  "delta",      :default => false, :null => false
   end
 
   add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
@@ -237,6 +250,7 @@ ActiveRecord::Schema.define(:version => 20090225121937) do
     t.string   "country"
     t.boolean  "approved",            :default => false, :null => false
     t.text     "specify"
+    t.boolean  "delta",               :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

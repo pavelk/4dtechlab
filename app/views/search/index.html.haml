@@ -1,34 +1,46 @@
 - if @results.size > 0
+  %h2.main
+    Search results
+    %span.small= "(#{@results.total_entries} results)"
   .box.boxArticles
     - for result in @results
       - if result.class == Event
-        .item.first
+        .item
           %h3= link_to result.title, result
-          %p.info In section Events
+          %p.info 
+            In section Events
+            .img= link_to(image_tag(result.eventphoto.url(:thumb)), result)
           .self
             %p= truncate(result.perex, :length => 180, :omission => '&hellip;')
+            = link_to 'Read full article', result
       - if result.class == User
-        .item.first
-          %h3= link_to result.full_name, result         
-          = link_to(image_tag(result.avatar.url(:forum)), user_detail_path(:id => result, :user => result.full_name.parameterize))  
-          %p.info In section People
+        .item
+          %h3= link_to result.full_name, user_detail_path(:id => result, :user => result.full_name.parameterize)         
+          .img= link_to(image_tag(result.avatar.url(:forum)), user_detail_path(:id => result, :user => result.full_name.parameterize))  
           .self
-            -#%p= truncate(result.perex, :length => 180, :omission => '&hellip;')
+            %p= result.user_position
+            %p= result.country
+          %p.info In section People
       - if result.class == Post
-        .item.first
-          -#%h3= link_to result.topic.title, result        
+        .item
+          %h3= link_to(result.topic.title, forum_topic_posts_path(result.topic.forum,result.topic, :anchor => "post-body-#{result.id}"))  
           = link_to(image_tag(result.user.avatar.url(:forum)), user_detail_path(:id => result.user, :user => result.user.full_name.parameterize))  
           %p.info In section Forum
           .self
             %p= truncate(result.body, :length => 180, :omission => '&hellip;')
       - if result.class == Help
-        .item.first
+        .item
           %h3= link_to result.title, result
           %p.info In section Help
           .self
             %p= truncate(result.perex, :length => 180, :omission => '&hellip;')
+      - if result.class == Comment
+        .item
+          %h3= link_to result.title, result.commentary
+  .paging
+    = will_paginate @results
 - else
   %p 
     Na hledaný výraz 
     = params[:search]
-    nebyl nalezen žádný výsledek."
+    nebyl nalezen žádný výsledek.

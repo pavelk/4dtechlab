@@ -8,6 +8,11 @@
         = f.text_field :title, :class => 'button w100'
     .clearfix
       .lab
+        = image_tag @event.eventphoto.url(:thumb)
+        = f.label :eventphoto, 'Your own photo'
+        = f.file_field :eventphoto
+    .clearfix
+      .lab
         = f.label :perex, 'Annotation:'
       .con
         = f.text_area :perex, :rows => 5, :cols => 80, :class => 'button w100'

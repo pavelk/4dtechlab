@@ -18,31 +18,33 @@
     .self
       %p= @item.perex
     .text= @item.description
-    %br
-    #tags=@item.tag_list.join(", ")
-.box.boxForm
-  .h
-    %h3 Add new comment
-  .in
-    - form_for([@item, Comment.new]) do |f|
-      %fieldset
-        %legend Add new comment.
-        .formBox
-          = render :partial => 'comments/form', :locals => { :f => f }
-        = submit_tag "Send comment", :class => 'submit'
-.box.boxComments
-  .h
-    %h3 Comments
-  .in
-    - @comments.each do |comment|
-      .item
-        .head
-          %h4
-            = comment.user.login 
-            | 
-            = comment.title
-          %p= distance_of_time_in_words_to_now(comment.created_at)
-        .self
-          %p= comment.comment
+    #tags
+      %strong
+        Tags: 
+        =@item.tag_list.join(", ")
+  .files
+    %ul
+      - @item.file_atts.each do |file|
+        %li
+          = link_to file.file_att_file_name, file.file_att.url
+          = " (#{number_to_human_size(file.file_att_file_size)})"
+  .clearfix
+    - form_for @item, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
+      -#= f.file_field :photo
+      %input{ :type => 'file', :name => 'file_att[file_att]' }
+      %br
+      %br
+      = f.submit "Add file", :class => 'submit'
+  .gallery
+    - @item.photos.each do |row|
+      .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
+  .clearfix
+    - form_for @item, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
+      -#= f.file_field :photo
+      %input{ :type => 'file', :name => 'photo[photo]' }
+      %br
+      %br
+      = f.submit "Add photo", :class => 'submit'
+= render(:partial => 'comments/comments', :object => @comments, :locals => { :parent => @item, :name_parent => 'Article'})
 -#= link_to 'Edit', edit_object_url
 -#= link_to 'Back', collection_url

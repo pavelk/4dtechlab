@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
     indexes body
     indexes user.first_name
     indexes user.last_name
+    set_property :delta => true
   end
   
   named_scope :new_posted, :limit => 10, :order => 'created_at DESC'

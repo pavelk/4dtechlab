@@ -13,8 +13,7 @@
       = @comments.size
       Comments
     .img
-      - if(@event.photos.size > 0)
-        = image_tag(@event.photos[0].photo.url(:thumb))
+      = image_tag(@event.eventphoto.url(:thumb))
     .self
       %p= @event.perex
     .text= @event.description
