@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090305115327) do
+ActiveRecord::Schema.define(:version => 20090309094330) do
 
   create_table "comments", :force => true do |t|
     t.datetime "created_at"
@@ -144,6 +144,24 @@ ActiveRecord::Schema.define(:version => 20090305115327) do
 
   add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "projects", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "title",                     :default => "",    :null => false
+    t.string   "perex",                     :default => "",    :null => false
+    t.string   "link"
+    t.text     "description"
+    t.boolean  "approved",                  :default => false, :null => false
+    t.string   "projectphoto_file_name"
+    t.string   "projectphoto_content_type"
+    t.integer  "projectphoto_file_size"
+    t.datetime "projectphoto_updated_at"
+    t.boolean  "delta",                     :default => false, :null => false
+  end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.datetime "created_at"

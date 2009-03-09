@@ -10,6 +10,7 @@
       %th{:width => '1%'} Views
       %th.la Last Post
     = render(:partial => "topic_post", :collection => @topics)
-.paging
-  = will_paginate @topics
+-if @topics.total_pages > 1
+  .paging
+    = will_paginate @topics
 =link_to 'New topic', new_object_url

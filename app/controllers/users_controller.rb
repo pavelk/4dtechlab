@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  #before_filter :require_no_user, :only => [:new, :create, :registration]
-  #before_filter :require_user, :only => [:show, :edit, :update, :change_password]
   skip_before_filter :check_authentication, :only => [:new, :create, :registration]
+  before_filter :load_tags, :only => [:show, :index]
   
   layout :choose_layout
   
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
   def index
     add_crumb('People')
     #@users = User.find(:all, :conditions => 'approved = false', :order => 'created_at DESC')
-    @users = User.all(:order => 'created_at ASC', :conditions => ['approved = ?', '1']).paginate :per_page => 6, :page => params[:page]
+    @users = User.all(:order => 'created_at ASC', :conditions => ['approved = ?', '1']).paginate :per_page => 15, :page => params[:page]
     respond_to do |format|
       format.html
       format.xml  { render :xml => @users }
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
 
   def noapproved
     add_crumb('People')
-    @users = User.all(:order => 'created_at ASC', :conditions => ['approved = ?', '0']).paginate :per_page => 6, :page => params[:page]
+    @users = User.all(:order => 'created_at ASC', :conditions => ['approved = ?', '0']).paginate :per_page => 15, :page => params[:page]
     render :action => "index"
   end
   
@@ -51,7 +50,6 @@ class UsersController < ApplicationController
   end
   
   def registration
-    #current_user_session.destroy
   end
   
   def show
@@ -73,6 +71,7 @@ class UsersController < ApplicationController
   
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
+    @user.tag_list = "#{@user.country}, #{@user.agency}, #{@user.user_position}"
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to user_path(@user)
@@ -105,6 +104,10 @@ class UsersController < ApplicationController
   end
 
   private
+    def load_tags
+      @tags = User.tag_counts # returns all the tags used
+    end  
+    
     def choose_layout    
       if [ 'new', 'registration' ].include? action_name
         'public'

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :projects, :has_many => :comments, :member => { :add_photo => :put }
+
   map.resources :items, :has_many => :comments
 
   map.resources :questions, :member => { :solved => :put }

@@ -28,7 +28,7 @@ class TopicsController < ResourceController::Base
     end
 
     def collection
-      @collection ||= end_of_association_chain.paginate :page => params[:page], :per_page => 5
+      @collection ||= end_of_association_chain.paginate :page => params[:page], :per_page => 20
     end
       
   

@@ -23,11 +23,6 @@
         = f.text_area :description, :rows => 5, :cols => 80, :class => 'button w100'
     .clearfix
       .lab
-        %label{:for => "item_library_id"} Library:
-      .con
-        = f.select(:library_id, Library.all.map {|l| [l.title, l.id]}, {:selected => @item.library_id})
-    .clearfix
-      .lab
         = f.label :tag_list, 'Tags (seperate with comma)'
       .con
-        = f.text_field :tag_list, :size => 90, :class => 'button w100'    
+        = f.text_field :tag_list, :size => 90, :class => 'button w100'  

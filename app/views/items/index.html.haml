@@ -29,8 +29,9 @@
       -if current_user.has_role?('admin') || current_user.id == item.user_id   
         %ul.actions
           %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
-.paging
-  = will_paginate @items
+-if @items.total_pages > 1
+  .paging
+    = will_paginate @items
 
 -#= link_to 'Show', object_url(item)
 -#= link_to 'Edit', edit_object_url(item)

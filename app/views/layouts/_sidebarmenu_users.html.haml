@@ -7,5 +7,5 @@
       -#%li= link_to "Edit my profile", edit_user_path(current_user)
       -#%li= link_to("Change password", change_password_user_path(current_user))
       - if_admin? do
-        %li= link_to("Not approved", noapproved_users_path)
+        %li= link_to("Not approved users", noapproved_users_path)
       -#%li= link_to('New registered', recent_users_path)

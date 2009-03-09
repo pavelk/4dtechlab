@@ -11,7 +11,7 @@
     %p.info 
       = distance_of_time_in_words_to_now(@item.created_at) 
       by 
-      = @item.user.login
+      = @item.user.full_name
       ,
       = @comments.size
       Comments
@@ -39,7 +39,7 @@
     - @item.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
   .clearfix
-    - form_for @item, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
+    - form_for @object, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
       -#= f.file_field :photo
       %input{ :type => 'file', :name => 'photo[photo]' }
       %br

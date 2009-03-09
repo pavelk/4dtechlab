@@ -47,8 +47,7 @@
                 %a.overlaid{ :href => '' }Add item<span></span>
                 .cont
                   %ul
-                    %li
-                      %a{ :href => '' }Add Project showcase
+                    %li= link_to 'Add Project showcase', new_project_path  
                     %li= link_to 'Add Library Item', new_library_item_path(Library.first)
                     %li= link_to 'Add Event', new_event_path
                   .bottom

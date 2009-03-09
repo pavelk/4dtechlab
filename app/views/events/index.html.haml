@@ -31,5 +31,6 @@
           %li= link_to 'Edit', edit_object_url(event), :class => 'ico edit'
   =link_to 'New event', new_object_url
   -#= link_to 'Destroy', object_url(event), :confirm => 'Are you sure?', :method => :delete
+-if @events.total_pages > 1
   .paging
     = will_paginate @events

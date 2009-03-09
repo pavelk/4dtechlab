@@ -1,6 +1,6 @@
 class CommentsController < ResourceController::Base
   
-  belongs_to :event, :item
+  belongs_to :event, :item, :project
   
   create.before :set_user
   

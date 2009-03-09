@@ -9,7 +9,7 @@
     .clearfix
       .lab
         = image_tag @event.eventphoto.url(:thumb)
-        = f.label :eventphoto, 'Your own photo'
+        = f.label :eventphoto, 'Illustration photo'
         = f.file_field :eventphoto
     .clearfix
       .lab
@@ -38,6 +38,6 @@
         = f.date_select :event_date, :order => [:day, :month, :year], :use_month_numbers => false, :start_year => 2009, :class => 'button w100'
     .clearfix
       .lab
-        = f.label :tag_list, 'Tags (seperate with spaces, e.g. hotel newyork, not new york)'
+        = f.label :tag_list, 'Tags (seperate with comma)'
       .con
         = f.text_field :tag_list, :size => 90, :class => 'button w100'

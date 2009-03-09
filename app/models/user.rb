@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-
+  
+  acts_as_taggable
+  
   has_many :events, :dependent => :nullify
   has_many :questions, :dependent => :nullify
   has_and_belongs_to_many :roles

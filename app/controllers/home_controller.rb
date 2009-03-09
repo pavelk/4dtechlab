@@ -22,8 +22,6 @@ class HomeController < ApplicationController
       @date = DateTime.new(year, month, day)
       rescue ArgumentError
         @date = Time.now
-    end
-    
-    
+    end    
   
 end

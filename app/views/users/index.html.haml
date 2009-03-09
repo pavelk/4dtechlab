@@ -1,10 +1,13 @@
+- content_for :box_2 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main 
   Find people
   %span.small= "(#{@users.total_entries} profiles)"
 .box.boxPeople
   = render(:partial => 'person', :collection => @users)
-.paging
-  = will_paginate @users
+-if @users.total_pages > 1
+  .paging
+    = will_paginate @users
 
 -#= link_to 'Show', user
 -#= link_to 'Edit', edit_user_path(user)
