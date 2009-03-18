@@ -21,7 +21,7 @@ class ItemsController < ResourceController::Base
     @item.photos << @photo
   
     respond_to do |format|
-      format.html { redirect_to(@item) }
+      format.html { redirect_to(library_item_path(@item.library, @item)) }
     end  
   end
   
@@ -31,7 +31,7 @@ class ItemsController < ResourceController::Base
     @item.file_atts << @file
   
     respond_to do |format|
-      format.html { redirect_to(@item) }
+      format.html { redirect_to(library_item_path(@item.library, @item)) }
     end  
   end
   

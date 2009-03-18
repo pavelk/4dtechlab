@@ -37,6 +37,10 @@ module ApplicationHelper
         end
       end
       content_tag :ul, items
-  end   
+  end
+  
+   def formatted_date value
+    return "#{value.mday}.#{value.mon}.#{value.year}"
+  end 
 
 end

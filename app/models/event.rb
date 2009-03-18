@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   has_many :photos, :as => :attachable, :dependent => :destroy
   #has_many :file_atts, :as => :attachable, :dependent => :destroy
   
-  validates_presence_of :title, :perex
+  validates_presence_of :title, :perex, :event_date, :location, :description
   validates_uniqueness_of :title
   
   #indexes for Sphinx

@@ -1,3 +1,5 @@
+- content_for :box_2 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main= @user.full_name
 .boxPeople.profile-detail
   .head

@@ -22,27 +22,28 @@
       %strong
         Tags: 
         =@project.tag_list.join(", ")
-  -#.files
-    -#%ul
-      -#- @event.file_atts.each do |file|
-        -#%li
-          -#= link_to file.file_att_file_name, file.file_att.url
-          -#= " (#{number_to_human_size(file.file_att_file_size)})"
-  -#.clearfix
-    -#- form_for @event, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
-      -#= f.file_field :photo
-      -#%input{ :type => 'file', :name => 'file_att[file_att]' }
-      -#%br
-      -#%br
-      -#= f.submit "Add file", :class => 'submit'
+  .files
+    %ul
+      - @project.file_atts.each do |file|
+        %li
+          = link_to file.file_att_file_name, file.file_att.url
+          = " (#{number_to_human_size(file.file_att_file_size)})"
+  -if current_user.has_role?('admin') || current_user.id == item.user_id        
+    .clearfix
+      - form_for @project, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
+        %input{ :type => 'file', :name => 'file_att[file_att]' }
+        %br
+        %br
+        = f.submit "Add file", :class => 'submit'
   .gallery
     - @project.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
-  .clearfix
-    - form_for @project, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
-      -#= f.file_field :photo
-      %input{ :type => 'file', :name => 'photo[photo]' }
-      %br
-      %br
-      = f.submit "Add photo", :class => 'submit'
+  -if current_user.has_role?('admin') || current_user.id == item.user_id    
+    .clearfix
+      - form_for @project, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
+        -#= f.file_field :photo
+        %input{ :type => 'file', :name => 'photo[photo]' }
+        %br
+        %br
+        = f.submit "Add photo", :class => 'submit'
 = render(:partial => 'comments/comments', :object => @comments, :locals => { :parent => @project, :name_parent => 'Project'})

@@ -3,31 +3,39 @@
   .in
     .clearfix
       .lab
-        = f.label :title
-      .con
-        = f.text_field :title, :class => 'button w100'
-    .clearfix
-      .lab
-        = f.label :perex, 'Annotation:'
-      .con
-        = f.text_area :perex, :rows => 5, :cols => 80, :class => 'button w100'
-    .clearfix
-      .lab
-        = f.label :link
-      .con
-        = f.text_field :link, :class => 'button w100'
-    .clearfix
-      .lab
-        = f.label :description
-      .con
-        = f.text_area :description, :rows => 5, :cols => 80, :class => 'button w100'
-    .clearfix
-      .lab
-        %label{:for => "item_library_id"} Library:
+        %label{:for => "item_library_id"} *Category:
       .con
         = f.select(:library_id, Library.all.map {|l| [l.title, l.id]}, {:selected => @item.library_id})
     .clearfix
       .lab
-        = f.label :tag_list, 'Tags (seperate with comma)'
+        = image_tag @item.itemphoto.url(:thumb)
+        = f.label :itemphoto, 'Image'
       .con
-        = f.text_field :tag_list, :size => 90, :class => 'button w100'    
+        = f.file_field :itemphoto
+        %p.info.offsetTop will be displayed if no other photo is selected
+    .clearfix
+      .lab
+        = f.label :title, '*Title'
+      .con
+        = f.text_field :title, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :perex, '*Introduction'
+      .con
+        = f.text_area :perex, :rows => 5, :cols => 80, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :description, '*Body text'
+      .con
+        = f.text_area :description, :rows => 5, :cols => 80, :class => 'button w100'
+    .clearfix
+      .lab
+        = f.label :tag_list, 'Tags'
+      .con
+        = f.text_field :tag_list, :size => 90, :class => 'button w100'
+        %p.info (seperate with comma)  
+    .clearfix
+      .lab
+        = f.label :link, "Project's URL"
+      .con
+        = f.text_field :link, :class => 'button w100'  

@@ -3,26 +3,34 @@
   .in
     .clearfix
       .lab
-        = f.label :title
+        = f.label :title, '*Title'
       .con
         = f.text_field :title, :class => 'button w100'
     .clearfix
       .lab
-        = f.label :perex, 'Annotation:'
+        = image_tag @project.projectphoto.url(:thumb)
+        = f.label :eventphoto, 'Image'
+      .con
+        = f.file_field :projectphoto
+        %p.info.offsetTop will be displayed if no other photo is selected
+    .clearfix
+      .lab
+        = f.label :perex, '*Introduction:'
       .con
         = f.text_area :perex, :rows => 5, :cols => 80, :class => 'button w100'
     .clearfix
       .lab
-        = f.label :link
-      .con
-        = f.text_field :link, :class => 'button w100'
-    .clearfix
-      .lab
-        = f.label :description
+        = f.label :description, '*Body text'
       .con
         = f.text_area :description, :rows => 5, :cols => 80, :class => 'button w100'
     .clearfix
       .lab
-        = f.label :tag_list, 'Tags (seperate with comma)'
+        = f.label :tag_list, 'Tags'
       .con
-        = f.text_field :tag_list, :size => 90, :class => 'button w100'  
+        = f.text_field :tag_list, :size => 90, :class => 'button w100'
+        %p.info (seperate with comma)
+    .clearfix
+      .lab
+        = f.label :link, "Project's URL"
+      .con
+        = f.text_field :link, :class => 'button w100'

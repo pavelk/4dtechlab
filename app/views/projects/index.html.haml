@@ -3,11 +3,11 @@
 - content_for :box_2 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main
-  Projects
+  Showcases of latest projects
   - if(@projects.total_entries > 0)
-    %span.small= "(#{@projects.total_entries} projects)"
+    %span.small= "(#{@projects.total_entries} posts)"
   - else
-    %span.small (No Projects at this date.)
+    %span.small (No Posts at this date.)
   =link_to 'New project', new_object_url, :class => 'new hidden'
 .box.boxArticles
   - @projects.each_with_index do |item,index|

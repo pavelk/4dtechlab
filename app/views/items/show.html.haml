@@ -4,8 +4,6 @@
 - content_for :box_1 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main= @item.title
-%p.navi &nbsp;
-/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
 .box.boxArticles.boxArticle
   .item
     %p.info 
@@ -21,30 +19,32 @@
     #tags
       %strong
         Tags: 
-        =@item.tag_list.join(", ")
+        =@item.tag_list.join(", ")    
   .files
     %ul
       - @item.file_atts.each do |file|
         %li
           = link_to file.file_att_file_name, file.file_att.url
           = " (#{number_to_human_size(file.file_att_file_size)})"
-  .clearfix
-    - form_for @item, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
-      -#= f.file_field :photo
-      %input{ :type => 'file', :name => 'file_att[file_att]' }
-      %br
-      %br
-      = f.submit "Add file", :class => 'submit'
+  -if current_user.has_role?('admin') || current_user.id == item.user_id  
+    .clearfix
+      - form_for @item, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
+        -#= f.file_field :photo
+        %input{ :type => 'file', :name => 'file_att[file_att]' }
+        %br
+        %br
+        = f.submit "Add file", :class => 'submit'
   .gallery
     - @item.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
-  .clearfix
-    - form_for @object, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
-      -#= f.file_field :photo
-      %input{ :type => 'file', :name => 'photo[photo]' }
-      %br
-      %br
-      = f.submit "Add photo", :class => 'submit'
+  -if current_user.has_role?('admin') || current_user.id == item.user_id
+    .clearfix
+      - form_for @object, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
+        -#= f.file_field :photo
+        %input{ :type => 'file', :name => 'photo[photo]' }
+        %br
+        %br
+        = f.submit "Add photo", :class => 'submit'
 = render(:partial => 'comments/comments', :object => @comments, :locals => { :parent => @item, :name_parent => 'Article'})
 -#= link_to 'Edit', edit_object_url
 -#= link_to 'Back', collection_url

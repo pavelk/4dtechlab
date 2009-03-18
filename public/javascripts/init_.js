@@ -32,17 +32,6 @@ $(document).ready(function(){
     }
   );
   
-  // edit profile - hover
-  $(".boxPeople .item .edit").hide();
-  $(".boxPeople .item").hover(
-    function() {
-      $(this).find(".edit").show();
-    },
-    function() {
-      $(this).find(".edit").hide();
-    }
-  );
-  
   // skryvani potvrzovacih hlasek
   $(".notice").wait(3000).fadeOut();
   $(".message").wait(3000).fadeOut();
@@ -80,4 +69,6 @@ function hideElements(e) {
 	if (source.tagName.toLowerCase() != 'input') {
     $("#search .phrases").addClass("hidden");
   }
+  
+  //return false;
 }

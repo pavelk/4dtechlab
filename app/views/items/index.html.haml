@@ -4,7 +4,7 @@
 - content_for :box_1 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
 %h2.main
-  Tools library / 
+  Latest codes and libraries / 
   = @library.title
   - if(@items.total_entries > 0)
     %span.small= "(#{@items.total_entries} articles)"

@@ -5,7 +5,6 @@
     %p= person.user_position
     %p= person.country
     - if(current_user == person)
-      %p= link_to "Edit my profile", edit_user_path(person)
-      %p= link_to("Change password", change_password_user_path(person))
-    -#.rating
-      -#%span.star3
+      %ul.edit
+        %li= link_to "Edit my profile", edit_user_path(person)
+        %li= link_to("Change password", change_password_user_path(person))

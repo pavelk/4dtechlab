@@ -15,6 +15,14 @@
     .img
       = image_tag(@event.eventphoto.url(:thumb))
     .self
+      .event-details
+        %p.alt
+          starts on
+          %strong= formatted_date(@event.event_date)
+          at
+          %strong= @event.location
+        %p
+          = link_to 'more info', @event.link
       %p= @event.perex
     .text= @event.description
     %br
@@ -38,11 +46,12 @@
   .gallery
     - @event.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
-  .clearfix
-    - form_for @event, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
-      -#= f.file_field :photo
-      %input{ :type => 'file', :name => 'photo[photo]' }
-      %br
-      %br
-      = f.submit "Add photo", :class => 'submit'
+  -if current_user.has_role?('admin') || current_user.id == item.user_id    
+    .clearfix
+      - form_for @event, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
+        -#= f.file_field :photo
+        %input{ :type => 'file', :name => 'photo[photo]' }
+        %br
+        %br
+        = f.submit "Add photo", :class => 'submit'
 = render(:partial => 'comments/comments', :object => @comments, :locals => { :parent => @event, :name_parent => 'Event'})

@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
   skip_before_filter :check_authentication, :only => [:new, :create, :registration]
-  before_filter :load_tags, :only => [:show, :index]
+  before_filter :load_tags, :only => [:show, :index, :tag, :noapproved]
   
   layout :choose_layout
   
 #  def sub_menu
 #    "submenu_users"
 #  end
+  def tag
+    @tag = User.find_tagged_with(params[:id])
+  end
   
   def sidebar_menu
     "sidebarmenu_users"
@@ -84,10 +87,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       if(params[:user][:approved] == "1")
+        @user.deliver_activation_info_to_user
         flash[:notice] = "Account approved!"
-        #@user.deliver_activation_info_to_user
         #poslat mail -> activate
       else
+        @user.deliver_deactivation_info_to_user
         flash[:notice] = "Account disabled!"
       end
       redirect_to user_path(@user)

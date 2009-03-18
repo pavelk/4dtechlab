@@ -17,9 +17,19 @@ class ProjectsController < ResourceController::Base
   end
   
   def add_photo
-    @project = Event.find(params[:id])
+    @project = Project.find(params[:id])
     @photo = Photo.new(params[:photo])
     @project.photos << @photo
+  
+    respond_to do |format|
+      format.html { redirect_to(@project) }
+    end  
+  end
+  
+  def add_file
+    @project = Project.find(params[:id])
+    @file = FileAtt.new(params[:file_att])
+    @project.file_atts << @file
   
     respond_to do |format|
       format.html { redirect_to(@project) }

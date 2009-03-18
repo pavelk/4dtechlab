@@ -241,17 +241,17 @@ a.overlaid,
            #contentBlock .boxArticles .first {  }
            #contentBlock .boxArticles .first h3 { font-size: 1.6em !important; }
            #contentBlock .boxArticles .item { position: relative; overflow: hidden; margin-bottom: 15px; padding: 10px 60px 12px 12px; }
-           #contentBlock .boxArticles .item h3 { font-size: 1.2em; }
-           #contentBlock .boxArticles .item .info { margin: 5px 0 15px; color: #000 !important; }
+           #contentBlock .boxArticles .item h3 { font-size: 1.2em; margin-bottom: 5px; }
+           #contentBlock .boxArticles .item .info { margin: 0 0 15px; color: #000 !important; font-size: .8em !important;}
            #contentBlock .boxArticles .item .img { float: left; width: 70px; }
-           #contentBlock .boxArticles .item .self { margin-left: 90px; padding-right: 90px; }
+           #contentBlock .boxArticles .item .self { margin-left: 90px; padding-right: 0; text-align: justify; }
            #contentBlock .boxArticles .item .actions { position: absolute; text-align: right; width: 70px; right: 15px; top: 12px; }
            #contentBlock .boxArticles .item .actions li { margin-bottom: 8px; }
-           #contentBlock .boxArticles .noImg .self { margin-left: 0; padding-right: 0;}
+           #contentBlock .boxArticles .noImg .self { margin-left: 0; padding-right: 0; }
            
-           #contentBlock .boxArticle { margin-top: -18px; }
+           #contentBlock .boxArticle { margin-top: -15px; }
            #contentBlock .boxArticle .item { padding: 0 60px 12px 0px; }
-           #contentBlock .boxArticle .text { clear: both; padding-top: 20px; }           
+           #contentBlock .boxArticle .text { clear: both; padding-top: 10px; text-align: justify; }           
            #contentBlock .boxArticle .text p,
            #contentBlock .boxArticle .text ul,
            #contentBlock .boxArticle .text ol,
@@ -269,7 +269,10 @@ a.overlaid,
            #contentBlock .boxArticle .files li a { font-size: 1.2em; }
            #contentBlock .boxArticle .gallery { margin: -1px 60px 0 0; border-top: 1px #d3d3d3 solid; overflow: hidden; height: 100%; padding: 20px 0 0; }
            #contentBlock .boxArticle .gallery .item { width: 150px; height: 120px; float: left; margin: 0 0 0 10px; padding: 0; text-align: center; }
+           #contentBlock .boxArticle .event-details { color: #000; text-align: right; margin: -25px 0 10px; }
+           #contentBlock .boxArticle .event-details strong { color: #b8171c; }
            
+           #contentBlock .help .self { padding-bottom: 15px; border-bottom: 1px #c8c8c8 solid; }            
            
            #contentBlock .boxLight { padding: 10px !important; background-color: #efefef !important; }
            #contentBlock .boxLight h3,
@@ -308,6 +311,8 @@ a.overlaid,
            #contentBlock .boxPeople .item h3 a { color: #b8171c; }
            #contentBlock .boxPeople .item .img { width: 78px; float: left; padding-top: 6px; }
            #contentBlock .boxPeople .item .self { margin-left: 90px; color: #333333; }
+           #contentBlock .boxPeople .item .edit { background: none; padding-top: 8px; }
+           #contentBlock .boxPeople .item .edit li { font-size: .8em; line-height: 1.4em; }
            #contentBlock .boxPeople .rating { width: 63px; height: 8px; margin-top: 15px; background: url('../images/bg-people-rating1.gif') repeat-x; }
            #contentBlock .boxPeople .rating span { display: block; height: 100%; background: url('../images/bg-people-rating2.gif') repeat-x; }
            #contentBlock .boxPeople .rating .star-1 { width: 9px; }
@@ -350,7 +355,8 @@ a.overlaid,
            
            #contentBlock .forum .item { margin-bottom: 1.5em; border-top: 3px #f3f3f3 solid; overflow: hidden; height: 100%; background: url('../images/bg-forum-item.gif') repeat-y; }
            #contentBlock .forum .item .head { width: 130px; float: left; padding: 5px 10px 10px; background-color: #f3f3f3; height: 100%; overflow: hidden; }
-           #contentBlock .forum .item .head h3 { margin-bottom: 8px; }
+           #contentBlock .forum .item .head h3 { margin-bottom: 8px; font-size: 1em; }
+           #contentBlock .forum .item .head h3 a { color: #b8171c; }
            #contentBlock .forum .item .head img { float: left; margin-right: 10px; }
            #contentBlock .forum .item .head p { font-size: .8em; margin-bottom: 2px; }
            #contentBlock .forum .item .self { float: right; width: 520px; padding: 10px 20px 10px 10px; }

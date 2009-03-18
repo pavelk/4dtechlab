@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :projects, :has_many => :comments, :member => { :add_photo => :put }
+  map.resources :projects, :has_many => :comments, :member => { :add_photo => :put, :add_file => :put }
 
   map.resources :items, :has_many => :comments
 

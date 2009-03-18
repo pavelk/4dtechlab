@@ -35,6 +35,7 @@ class QuestionsController < ResourceController::Base
   end
   
   create.wants.html do
+    @question.deliver_new_question_to_admin(current_user)
     flash "Thank you for your question!"
     redirect_to helps_path 
   end

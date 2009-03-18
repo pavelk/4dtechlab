@@ -47,9 +47,13 @@ class User < ActiveRecord::Base
     Notifier.deliver_mail_sent_to_admin(self)
   end
   
-#  def deliver_activation_info_to_user
-#    Notifier.deliver_activation(self)
-#  end
+  def deliver_activation_info_to_user
+    Notifier.deliver_activation_info_to_user(self)
+  end
+  
+  def deliver_deactivation_info_to_user
+    Notifier.deliver_deactivation_info_to_user(self)
+  end
 
   
   has_attached_file :avatar, :styles => { :small => "78x100#", :forum => "47x60#" },

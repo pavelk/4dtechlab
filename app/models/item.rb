@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   has_many :photos, :as => :attachable, :dependent => :destroy
   has_many :file_atts, :as => :attachable, :dependent => :destroy
   
-  validates_presence_of :title, :perex
+  validates_presence_of :title, :perex, :description
   validates_uniqueness_of :title
   
   acts_as_taggable
