@@ -2,7 +2,7 @@
   = render(:partial => "shared/calendar", :locals => { :events => @month_events, :date => @date })
 - content_for :box_2 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags})
-%h2.main 10 latest posts 
+%h2.main Latest news 
 .box.boxArticles
   - @items.each_with_index do |item,index|
     %div{:class => "item #{index == 0 ? 'first' : nil}"}
