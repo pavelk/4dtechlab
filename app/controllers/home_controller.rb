@@ -4,6 +4,22 @@ class HomeController < ApplicationController
   def index
     @tags = Item.tag_counts + Event.tag_counts
     @month_events = Event.monthly_events(@date)
+    #@items = ActiveRecord::Base.connection.select_all("SELECT id, title, perex, created_at
+    @items = Event.find_by_sql("SELECT id, title, perex, created_at, user_id, eventphoto_file_name, @type:='EVENT' AS typ
+                                FROM events 
+                                UNION 
+                                SELECT id, title, perex, created_at, user_id, projectphoto_file_name, @type:='PROJECT' AS typ
+                                FROM projects
+                                UNION
+                                SELECT id, title, perex, created_at, user_id, itemphoto_file_name, @type:='ITEM' AS typ
+                                FROM items
+                                UNION
+                                SELECT id, first_name, last_name, created_at, login, email, @type:='USER' AS typ
+                                FROM users
+                                ORDER BY created_at DESC
+                                LIMIT 10"
+                              )                       
+                                
   end
   
   def tag
