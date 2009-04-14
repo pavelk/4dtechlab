@@ -8,7 +8,8 @@ class EventsController < ResourceController::Base
   
   def index
     add_crumb("Events")
-    @events = @month_events.paginate :page => params[:page]
+    #@events = @month_events.paginate :page => params[:page]
+    @events = Event.all(:conditions => ['event_date >= ?', @date ]).paginate :page => params[:page]
   end
   
   def show

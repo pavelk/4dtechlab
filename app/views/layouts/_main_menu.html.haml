@@ -10,7 +10,8 @@
   %li= main_tab_for('Forum', forums_path)
   -#= layout_link_to "Forum", forums_path
   %li= main_tab_for('People', users_path)
-  %li= main_tab_for('Events', events_all_path(:year => Time.now.year, :month => Time.now.month))
+  -#%li= main_tab_for('Events', events_all_path(:year => Time.now.year, :month => Time.now.month))
+  %li= main_tab_for('Events', events_path)
   -#= layout_link_to "Events", events_path
   - if_admin? do
     %li.fr= main_tab_for('Questions', questions_path)

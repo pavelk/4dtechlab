@@ -1,6 +1,6 @@
 /* -- Class for form fields with validation errors -- */
-.fieldWithErrors{
-  border: 1px solid red;
+.fieldWithErrors input {
+  background-color: #b8171c !important;
 }
 
 /* -- style for ruby debug -- */

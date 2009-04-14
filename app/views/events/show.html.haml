@@ -12,17 +12,17 @@
       ,
       = @comments.size
       Comments
+    .event-details
+      %p.alt
+        starts on
+        %strong= formatted_date(@event.event_date)
+        at
+        %strong= @event.location
+      %p
+        = link_to 'more info', @event.link  
     .img
       = image_tag(@event.eventphoto.url(:thumb))
     .self
-      .event-details
-        %p.alt
-          starts on
-          %strong= formatted_date(@event.event_date)
-          at
-          %strong= @event.location
-        %p
-          = link_to 'more info', @event.link
       %p= @event.perex
     .text= @event.description
     %br

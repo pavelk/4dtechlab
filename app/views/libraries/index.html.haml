@@ -14,7 +14,7 @@
 .box.boxArticles
   - @items.each_with_index do |item,index|
     %div{:class => "item #{index == 0 ? 'first' : nil}"}
-      %h3= link_to item.title, object_url(item)
+      %h3= link_to item.title, library_item_path(item.library, item)
       %p.info 
         = distance_of_time_in_words_to_now(item.created_at)
         by

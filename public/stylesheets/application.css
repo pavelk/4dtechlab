@@ -269,7 +269,7 @@ a.overlaid,
            #contentBlock .boxArticle .files li a { font-size: 1.2em; }
            #contentBlock .boxArticle .gallery { margin: -1px 60px 0 0; border-top: 1px #d3d3d3 solid; overflow: hidden; height: 100%; padding: 20px 0 0; }
            #contentBlock .boxArticle .gallery .item { width: 150px; height: 120px; float: left; margin: 0 0 0 10px; padding: 0; text-align: center; }
-           #contentBlock .boxArticle .event-details { color: #000; text-align: right; margin: -25px 0 10px; }
+           #contentBlock .boxArticle .event-details { color: #000; text-align: right; margin: -10px 0 5px; }
            #contentBlock .boxArticle .event-details strong { color: #b8171c; }
            
            #contentBlock .help .self { padding-bottom: 15px; border-bottom: 1px #c8c8c8 solid; }            

@@ -7,7 +7,7 @@
   - if(@events.total_entries > 0)
     %span.small= "(#{@events.total_entries} events)"
   - else
-    %span.small (No Events at this date. Please use the calendar to find your Event.)
+    %span.small (No upcoming Events are planned. Please use the calendar to find past Events.)
   =link_to 'New event', new_object_url, :class => 'new hidden'
 .box.boxArticles
   - @events.each_with_index do |event,index|

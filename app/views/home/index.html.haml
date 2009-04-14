@@ -15,7 +15,10 @@
           ,
           = item.comments.size
           Comments
-        .img= link_to(image_tag("/assets/itemphotos/#{item.id}/thumb/#{item.eventphoto_file_name}"), item_path(item))
+        -if(item.eventphoto_file_name != nil)
+          .img= link_to(image_tag("/assets/itemphotos/#{item.id}/thumb/#{item.eventphoto_file_name}"), item_path(item))
+        -else
+          .img= image_tag("/itemphotos/thumb/missing.png")
         .self
           %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
           = link_to 'Read full article', item_path(item)
@@ -41,12 +44,16 @@
           ,
           = item.comments.size
           Comments
-        .img= link_to(image_tag("/assets/projectphotos/#{item.id}/thumb/#{item.eventphoto_file_name}"), project_path(item))
+        -if(item.eventphoto_file_name != nil)  
+          .img= link_to(image_tag("/assets/projectphotos/#{item.id}/thumb/#{item.eventphoto_file_name}"), project_path(item))
+        -else
+          .img= image_tag("/projectphotos/thumb/missing.png")
         .self
           %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
           = link_to 'Read full article', project_path(item)
       - elsif item.typ == "USER"
         .item.boxLight
           -#%p= "#{item.title} #{item.perex} joined Techlab community"
-          %p= link_to("#{item.title} #{item.perex} joined Techlab community", user_path(item))
-        
+          %p
+            = link_to("#{item.title} #{item.perex}", user_path(item))
+            &nbsp;joined Techlab community
