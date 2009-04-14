@@ -23,8 +23,8 @@
     .img
       = image_tag(@event.eventphoto.url(:thumb))
     .self
-      %p= @event.perex
-    .text= @event.description
+      %p= h @event.perex
+    .text= h @event.description
     %br
     #tags
       %strong

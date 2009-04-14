@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def sidebar_menu
     nil
   end
-  
+    
   protected
     def set_active_tab
       @active_tab ||= self.controller_name.to_sym

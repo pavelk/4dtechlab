@@ -14,7 +14,7 @@
 .box.boxArticles
   - @items.each_with_index do |item,index|
     %div{:class => "item #{index == 0 ? 'first' : nil}"}
-      %h3= link_to item.title, object_url(item)
+      %h3= link_to h(item.title), object_url(item)
       %p.info 
         = distance_of_time_in_words_to_now(item.created_at)
         by
@@ -24,7 +24,7 @@
         Comments
       .img= link_to(image_tag(item.itemphoto.url(:thumb)), object_url(item))
       .self
-        %p= truncate(item.perex, :length => 180, :omission => '&hellip;')
+        %p= truncate(h(item.perex), :length => 180, :omission => '&hellip;')
         = link_to 'Read full article', object_url(item)
       -if current_user.has_role?('admin') || current_user.id == item.user_id   
         %ul.actions

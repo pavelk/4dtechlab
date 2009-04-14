@@ -2,7 +2,7 @@
   = render(:partial => "shared/calendar", :locals => { :events => @events, :date => @date })
 - content_for :box_2 do
   = render(:partial => "shared/cloud", :locals => { :tags => @tags})  
-%h2.main= @project.title
+%h2.main= h @project.title
 .box.boxArticles.boxArticle
   .item
     %p.info 
@@ -15,8 +15,8 @@
     .img
       = image_tag(@project.projectphoto.url(:thumb))
     .self
-      %p= @project.perex
-    .text= @project.description
+      %p= h @project.perex
+    .text= h @project.description
     %br
     #tags
       %strong

@@ -14,7 +14,7 @@
     %div{:class => "item #{index == 0 ? 'first' : nil}"}
       -#= first_item(index)
       -#%h3= link_to event.title, object_url(event)
-      %h3= link_to event.title, events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday)
+      %h3= link_to h(event.title), events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday)
       %p.info 
         = distance_of_time_in_words_to_now(event.created_at)
         by
@@ -24,7 +24,7 @@
         Comments
       .img= link_to(image_tag(event.eventphoto.url(:thumb)), events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday))
       .self
-        %p= truncate(event.perex, :length => 180, :omission => '&hellip;')
+        %p= truncate(h(event.perex), :length => 180, :omission => '&hellip;')
         = link_to 'Read full article', events_detail_path(:id => event, :year => @date.year, :month => @date.month, :day => @date.mday)
       -if current_user.has_role?('admin') || current_user.id == event.user_id   
         %ul.actions

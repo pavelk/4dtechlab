@@ -5,4 +5,4 @@
     %p= "#{post_post.user.posts_count} post(s)"  
     %p= distance_of_time_in_words_to_now(post_post.created_at)
   .self
-    = post_post.body
+    = h post_post.body
