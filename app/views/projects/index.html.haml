@@ -26,7 +26,7 @@
       .self
         %p= truncate(h(item.perex), :length => 180, :omission => '&hellip;')
         = link_to 'Read full article', object_url(item)
-      -if current_user.has_role?('admin') || current_user.id == event.user_id   
+      -if current_user.has_role?('admin') || current_user.id == item.user_id   
         %ul.actions
           %li= link_to 'Edit', edit_object_url(item), :class => 'ico edit'
   -#= link_to 'Destroy', object_url(event), :confirm => 'Are you sure?', :method => :delete

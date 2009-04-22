@@ -26,7 +26,7 @@
         %li
           = link_to file.file_att_file_name, file.file_att.url
           = " (#{number_to_human_size(file.file_att_file_size)})"
-  -if current_user.has_role?('admin') || current_user.id == item.user_id  
+  -if current_user.has_role?('admin') || current_user.id == @item.user_id  
     .clearfix
       - form_for @item, :url => {:action => 'add_file'}, :html => {:multipart => true} do |f|
         -#= f.file_field :photo

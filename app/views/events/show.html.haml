@@ -46,7 +46,7 @@
   .gallery
     - @event.photos.each do |row|
       .item= link_to image_tag(row.photo.url(:small)), home_url, :class => 'thickbox', :rel => 'article'
-  -if current_user.has_role?('admin') || current_user.id == item.user_id    
+  -if current_user.has_role?('admin') || current_user.id == @event.user_id    
     .clearfix
       - form_for @event, :url => {:action => 'add_photo'}, :html => {:multipart => true} do |f|
         -#= f.file_field :photo
