@@ -132,10 +132,10 @@ a.overlaid,
   #view .holder { width: 990px; margin: 0 auto; text-align: left; }
   
   #head .holder { position: relative; z-index: 5; padding-top: 15px; }
-  #head #logo { position: absolute; width: 64%; height: 114px; top: 0; left: 0; z-index: 1; float: left; background: url('../images/bg-head.jpg') 100% 0 no-repeat; }
+  #head #logo { position: absolute; width: 64%; height: 125px; top: 0; left: 0; z-index: 1; float: left; background: url('../images/bg-head.jpg') 100% 0 no-repeat; }
   
-  #head #header { width: 150px; height: 50px; overflow: hidden; line-height: 150px; }
-        #header span { background: url('../images/bg-header.gif') no-repeat; }
+  #head #header { width: 150px; height: 60px; overflow: hidden; line-height: 150px; }
+        #header span { background: url('../images/bg-header2.gif') no-repeat; }
   
   #head #mainMenu { padding: 7px 0 0 226px; height: 42px; background: url('../images/bg-mainmenu-shadow.png') no-repeat; }
         #mainMenu ul { overflow: hidden; height: 100%; padding: 0 8px; background-color: #c2151a; }
