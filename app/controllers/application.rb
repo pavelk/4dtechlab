@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :check_authentication
   
-  include ExceptionLoggable
+  #include ExceptionLoggable
   
   add_crumb "TechLab", '/'
     
