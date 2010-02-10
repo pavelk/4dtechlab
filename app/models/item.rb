@@ -28,6 +28,6 @@ class Item < ActiveRecord::Base
                     :path => ":rails_root/public/assets/itemphotos/:id/:style/:basename.:extension"
 
   #validates_attachment_presence :avatar
-  validates_attachment_size :itemphoto, :less_than => 1.megabytes
-  validates_attachment_content_type :itemphoto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  #validates_attachment_size :itemphoto, :less_than => 1.megabytes
+  #validates_attachment_content_type :itemphoto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 end

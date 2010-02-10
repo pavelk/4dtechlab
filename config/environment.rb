@@ -6,6 +6,7 @@ Rails::Initializer.run do |config|
   
   config.gem 'authlogic',
              :version => '~> 2.1.2'
+  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'           
   
   config.time_zone = 'UTC'
 

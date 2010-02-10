@@ -1,6 +1,10 @@
 module ApplicationHelper
   include TagsHelper
-
+  
+  def h(s)
+    return s
+  end
+  
   def if_admin?
     yield if current_user && current_user.has_role?('admin')
   end
