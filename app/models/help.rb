@@ -11,12 +11,14 @@ class Help < ActiveRecord::Base
   end
   
   #indexes for Sphinx
+=begin    
   define_index do
     indexes title
     indexes perex
     indexes description
     set_property :delta => true
   end
+=end  
   
   def to_param
       "#{id}-#{title.parameterize}"

@@ -6,10 +6,12 @@ class Comment < ActiveRecord::Base
   validates_presence_of :title, :comment
   
   #indexes for Sphinx
+=begin  
   define_index do
     indexes title
     indexes comment
     set_property :delta => true
   end
+=end  
   
 end

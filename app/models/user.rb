@@ -6,17 +6,23 @@ class User < ActiveRecord::Base
   has_many :questions, :dependent => :nullify
   has_and_belongs_to_many :roles
   
-  acts_as_authentic :login_field_type => 'email', :login_field => 'email'
+  #acts_as_authentic :login_field_type => 'email', :login_field => 'email'
+  acts_as_authentic do |c|
+    c.login_field = 'email'
+    c.validates_length_of_password_field_options = { :minimum => 5 }
+  end
   
   validates_presence_of :first_name, :last_name, :agency
   
   #indexes for Sphinx
+=begin  
   define_index do
     indexes email
     indexes first_name
     indexes last_name
     set_property :delta => true
   end
+=end  
    
   named_scope :new_registered, :limit => 10, :order => 'created_at DESC'
   

@@ -5,14 +5,14 @@ class Post < ActiveRecord::Base
   
   validates_presence_of :body 
   validates_length_of :body, :maximum => 10000
-  
+=begin  
   define_index do
     indexes body
     indexes user.first_name
     indexes user.last_name
     set_property :delta => true
   end
-  
+=end  
   named_scope :new_posted, :limit => 10, :order => 'created_at DESC'
   
 end

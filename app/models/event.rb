@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
   validates_uniqueness_of :title
   
   #indexes for Sphinx
+=begin    
   define_index do
     indexes title
     indexes perex
@@ -22,6 +23,7 @@ class Event < ActiveRecord::Base
     indexes user.last_name
     set_property :delta => true
   end
+=end  
   
   named_scope :period_events,
               lambda { |date_from, date_until| { :conditions => ['event_date >= ? and event_date <= ?',

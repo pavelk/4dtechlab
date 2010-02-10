@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :title
   
   #indexes for Sphinx
+=begin  
   define_index do
     indexes title
     indexes perex
@@ -18,6 +19,7 @@ class Project < ActiveRecord::Base
     indexes user.last_name
     set_property :delta => true
   end
+=end  
   
   def to_param
       "#{id}-#{title.parameterize}"
