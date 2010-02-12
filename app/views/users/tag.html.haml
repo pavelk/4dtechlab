@@ -4,13 +4,15 @@
   Users with Tag "
   = params[:id]
   "
-.box.boxArticles
-  - @tag.each_with_index do |user,index|
-    .item.first
+.box.boxPeople
+  = render(:partial => 'person', :collection => @tag)
+-#.box.boxArticles
+  -#- @tag.each_with_index do |user,index|
+    -#.item.first
       -#= first_item(index)
-      %h3= link_to(image_tag(user.avatar.url(:small)), user_detail_path(:id => user, :user => user.full_name.parameterize))
+      -#%h3= link_to(image_tag(user.avatar.url(:small)), user_detail_path(:id => user, :user => user.full_name.parameterize))
       -#%h3= link_to event.title, detail_path(:id => event, :title => event.title.parameterize)
       -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
-      .self
+      v.self
         -#%p= truncate(user.perex, :length => 180, :omission => '&hellip;')
-  .paging
+  -#.paging
