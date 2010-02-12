@@ -13,6 +13,7 @@
       ,
       = @comments.size
       Comments
+    = image_tag @item.itemphoto.url(:thumb)  
     .self
       %p= h @item.perex
     .text= h @item.description

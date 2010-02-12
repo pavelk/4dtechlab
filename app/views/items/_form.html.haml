@@ -3,7 +3,7 @@
   .in
     .clearfix
       .lab
-        %label{:for => "item_library_id"} *Category__:
+        %label{:for => "item_library_id"} *Category:
       .con
         = f.select(:library_id, Library.all.map {|l| [l.title, l.id]}, {:selected => @item.library_id})
     .clearfix

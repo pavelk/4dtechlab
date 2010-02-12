@@ -26,8 +26,8 @@ class Item < ActiveRecord::Base
   has_attached_file :itemphoto, :styles => { :thumb => "70x66#" },
                     :url  => "/assets/itemphotos/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/itemphotos/:id/:style/:basename.:extension"
-
+                    
   #validates_attachment_presence :avatar
-  #validates_attachment_size :itemphoto, :less_than => 1.megabytes
-  #validates_attachment_content_type :itemphoto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_size :itemphoto, :less_than => 1.megabytes
+  validates_attachment_content_type :itemphoto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 end
