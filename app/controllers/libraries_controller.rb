@@ -12,6 +12,10 @@ class LibrariesController < ResourceController::Base
   def index
     @libraries = Library.all
     @items = Item.all.paginate :page => params[:page], :per_page => 10
+  end
+  
+  def tag
+    @tag = Item.find_tagged_with(params[:id])
   end  
   
   private

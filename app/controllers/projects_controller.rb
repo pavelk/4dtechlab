@@ -1,6 +1,6 @@
 class ProjectsController < ResourceController::Base
   before_filter :load_date, :only => [:index, :show, :tag]
-  before_filter :load_tags, :only => [:show, :index]
+  before_filter :load_tags, :only => [:show, :index, :tag]
   before_filter :load_comments, :only => :show
   
   create.before :set_user
@@ -34,6 +34,11 @@ class ProjectsController < ResourceController::Base
     respond_to do |format|
       format.html { redirect_to(@project) }
     end  
+  end
+  
+  def tag
+    @month_events = Event.monthly_events(@date)
+    @tag = Project.find_tagged_with(params[:id])
   end
   
   private

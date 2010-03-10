@@ -1,0 +1,14 @@
+- content_for :sidebarmenu do
+  = render(:partial => "libraries/libraries", :object => Library.all)
+- content_for :box_1 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
+%h2.main 
+  Articles with Tag "
+  = params[:id]
+  "
+.box.boxArticles
+  - @tag.each_with_index do |event,index|
+    .item.first
+      %h3= link_to event.title, item_path(event)
+      .self
+        %p= truncate(event.perex, :length => 180, :omission => '&hellip;')        

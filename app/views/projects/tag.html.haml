@@ -1,0 +1,15 @@
+- content_for :box_1 do
+  = render(:partial => "shared/calendar", :locals => { :events => @month_events, :date => @date })
+- content_for :box_2 do
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags})
+%h2.main 
+  Projects with Tag "
+  = params[:id]
+  "
+.box.boxArticles
+  - @tag.each_with_index do |project,index|
+    .item.first
+      %h3= link_to project.title, object_url(project)
+      .self
+        %p= truncate(project.perex, :length => 180, :omission => '&hellip;')
+  -#.paging  
