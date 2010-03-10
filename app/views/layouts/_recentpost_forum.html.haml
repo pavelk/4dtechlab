@@ -4,4 +4,4 @@
   .in
     %ul
       - posts.each do |post|
-        %li= link_to(truncate(post.body.gsub(/<\/?[^>]*>/, ""), :length => 180, :omission => '&hellip;'), forum_topic_posts_path(post.topic.forum, post.topic, :anchor => "post-body-#{post.id}")  ,:class => 'inlink')
+        %li= link_to(truncate(post.body.gsub(/<\/?[^>]*>/, ""), :length => 30, :omission => '&hellip;'), forum_topic_posts_path(post.topic.forum, post.topic, :anchor => "post-body-#{post.id}")  ,:class => 'inlink')
