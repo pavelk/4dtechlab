@@ -13,10 +13,12 @@ Rails::Initializer.run do |config|
   config.i18n.load_path = Dir[File.join(RAILS_ROOT, 'config', 'locales', '*.{rb,yml}')]
   config.i18n.default_locale = :en
 
+=begin
   config.action_controller.session = {
     :session_key => '_techlab_session',
     :secret      => 'c13bce14a78db6da1fbde83272fd7c6d10dcb228e14771357168d1ff324043a5e0818535170d7c89ed50e591a1396738429dc53d110def2ddddf177c6eb49a47'
   }
+=end  
 
   config.action_controller.session_store = :active_record_store
 
