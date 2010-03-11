@@ -8,8 +8,17 @@
   "
 .box.boxArticles
   - @tag.each_with_index do |project,index|
-    .item.first
+    %div{:class => "item #{index == 0 ? 'first' : nil}"}
       %h3= link_to project.title, object_url(project)
+      %p.info 
+        = distance_of_time_in_words_to_now(project.created_at)
+        by
+        = link_to(project.user.full_name, user_detail_path(:id => project.user, :user => project.user.full_name.parameterize))
+        ,
+        = project.comments.size
+        Comments
+      .img= link_to(image_tag(project.projectphoto.url(:thumb)), object_url(project))
       .self
         %p= truncate(project.perex, :length => 180, :omission => '&hellip;')
-  -#.paging  
+        = link_to 'Read full article', object_url(project)
+  -#.paging

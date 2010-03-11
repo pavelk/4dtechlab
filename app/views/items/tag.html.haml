@@ -2,19 +2,23 @@
   -#= render(:partial => "library", :collection => @libraries)
   = render(:partial => "libraries/libraries", :object => Library.all)
 - content_for :box_1 do
-  = render(:partial => "shared/cloud", :locals => { :tags => @tags}) 
+  = render(:partial => "shared/cloud", :locals => { :tags => @tags})
 %h2.main 
   Articles with Tag "
   = params[:id]
   "
-/<p class="navi"><a href="">TechLab</a> &gt; <a href="">Library</a> &gt; <a href="">Programming</a> &gt; <a href="">CSS and Xhtml</a> &gt; CSS Frameworks</p>
--#%p.counter= "Found #{@events.size} articles"
 .box.boxArticles
   - @tag.each_with_index do |event,index|
-    .item.first
-      -#= first_item(index)
+    %div{:class => "item #{index == 0 ? 'first' : nil}"}
       %h3= link_to event.title, object_url(event)
-      -#%h3= link_to event.title, detail_path(:id => event, :title => event.title.parameterize)
-      -#%p.info December 3, 2009 by <a href="">Jiří Langer</a>, <a href="">4 Comments</a>
+      %p.info 
+        = distance_of_time_in_words_to_now(event.created_at)
+        by
+        = link_to(event.user.full_name, user_detail_path(:id => event.user, :user => event.user.full_name.parameterize))
+        ,
+        = event.comments.size
+        Comments
+      .img= link_to(image_tag(event.itemphoto.url(:thumb)), object_url(event))
       .self
         %p= truncate(event.perex, :length => 180, :omission => '&hellip;')
+        = link_to 'Read full article', object_url(event)
